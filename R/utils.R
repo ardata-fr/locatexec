@@ -99,6 +99,7 @@ read_registry_app_version <- function(name){
 sanitize_paths <- function(x){
   x <- x[!is.na(x)]
   x <- x[!x%in%""]
+  x <- unique(x)
   x <- x[dir.exists(x)]
   sapply(x, absolute_path)
 }

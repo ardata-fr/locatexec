@@ -1,7 +1,7 @@
 Package: locatexec
 Type: Package
 Title: Detection and Localization of Executable Files
-Version: 0.0.3
+Version: 0.0.4.001
 Authors@R: c(
     person("David", "Gohel", role = c("aut", "cre"),
     email = "david.gohel@ardata.fr"),
@@ -12,7 +12,7 @@ Description: A set of functions to locate some programs
  'Node.js', 'npm', 'LibreOffice', 'Microsoft Word', 'Microsoft PowerPoint', 
  'Microsoft Excel', 'Python', 'pip', 'Mozilla Firefox' and 'Google Chrome'.
  User can test the availability of a program with eventually a version 
- and call it without having to define any environment variable.
+ and call it with function system2 or system.
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
