@@ -36,6 +36,13 @@
 #' exec_locate("powerpoint")
 #' @seealso [exec_available()] will check if an executable is available
 #' and [exec_version()] will return the version of a located executable.
+#' @section libreoffice:
+#' On some Ubuntu platforms, 'LibreOffice' require to add in
+#' the environment variable `LD_LIBRARY_PATH` the following path:
+#' `/usr/lib/libreoffice/program` (you should see the message
+#' "libreglo.so cannot open shared object file" if it is the case). This
+#' can be done with R
+#' command `Sys.setenv(LD_LIBRARY_PATH = "/usr/lib/libreoffice/program/")`
 exec_locate <- function(exec, cache = TRUE, dir = NULL, version = NULL){
   exec <- match.arg(exec, choices = supported_exec, several.ok = FALSE)
   class(exec) <- exec

@@ -48,6 +48,16 @@ for 'Google Chrome', 'Mozilla Firefox', 'Microsoft Word', 'Microsoft PowerPoint'
 and 'Microsoft Excel' is done in the registry, which means that only one version
 can be chosen, the one referenced in the registry.
 }
+\section{libreoffice}{
+
+On some Ubuntu platforms, 'LibreOffice' require to add in
+the environment variable \code{LD_LIBRARY_PATH} the following path:
+\verb{/usr/lib/libreoffice/program} (you should see the message
+"libreglo.so cannot open shared object file" if it is the case). This
+can be done with R
+command \code{Sys.setenv(LD_LIBRARY_PATH = "/usr/lib/libreoffice/program/")}
+}
+
 \examples{
 exec_locate("firefox")
 exec_locate("chrome")
