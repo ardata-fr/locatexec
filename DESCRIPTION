@@ -1,7 +1,7 @@
 Package: locatexec
 Type: Package
 Title: Detection and Localization of Executable Files
-Version: 0.0.4.001
+Version: 0.1.0
 Authors@R: c(
     person("David", "Gohel", role = c("aut", "cre"),
     email = "david.gohel@ardata.fr"),
