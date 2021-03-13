@@ -196,6 +196,7 @@ exec_locate.libreoffice <- function(exec, cache = TRUE, dir = NULL, version = NU
       "~/Applications/LibreOffice.app/Contents/MacOS",
       "/usr/local/bin",
       "/usr/bin",
+      if(is_windows()) read_registry_app_path("soffice.exe"),
       "C:/Program Files/LibreOffice/program"
     )
   } else {
@@ -320,6 +321,7 @@ exec_locate.pip <- function(exec, cache = TRUE, dir = NULL, version = NULL){
 
 # utils ----
 compete_source_versions <- function(sources, exec, version_fun = extract_numeric_version, version){
+  sources <- unique(sources)
   candidates <- exec_candidates(sources = sources, exec = exec)
   versions <- lapply(candidates, version_fun)
 

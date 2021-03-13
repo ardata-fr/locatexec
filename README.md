@@ -23,22 +23,22 @@ if(exec_available("node")){
   message(exec_version("node"))
   message(node_exec())
 }
-#> 12.18.2
-#> /usr/local/bin/node
+#> 12.16.0
+#> C:/Program Files/nodejs/node.exe
 ```
 
-| exec        | exec\_fun            | available | version      | path                                                                       |
-| :---------- | :------------------- | :-------- | :----------- | :------------------------------------------------------------------------- |
-| node        | `node_exec()`        | TRUE      | 12.18.2      | /usr/local/bin/node                                                        |
-| chrome      | `chrome_exec()`      | TRUE      | 89.0.4389.82 | /Applications/Google Chrome.app/Contents/MacOS/Google Chrome               |
-| python      | `python_exec()`      | TRUE      | 3.9.1        | /usr/local/bin/python3                                                     |
-| libreoffice | `libreoffice_exec()` | TRUE      | 7.1.0.3      | /Applications/LibreOffice.app/Contents/MacOS/soffice                       |
-| excel       | `excel_exec()`       | TRUE      | 16.46        | /Applications/Microsoft Excel.app/Contents/MacOS/Microsoft Excel           |
-| powerpoint  | `powerpoint_exec()`  | TRUE      | 16.46        | /Applications/Microsoft PowerPoint.app/Contents/MacOS/Microsoft PowerPoint |
-| pip         | `pip_exec()`         | TRUE      | 20.3.3       | /usr/local/bin/pip3                                                        |
-| firefox     | `firefox_exec()`     | TRUE      | 86.0.1       | /Applications/Firefox.app/Contents/MacOS/firefox                           |
-| npm         | `npm_exec()`         | TRUE      | 6.14.5       | /usr/local/bin/npm                                                         |
-| word        | `word_exec()`        | TRUE      | 16.46        | /Applications/Microsoft Word.app/Contents/MacOS/Microsoft Word             |
+| exec        | exec\_fun            | available | version      | path                                                                  |
+| :---------- | :------------------- | :-------- | :----------- | :-------------------------------------------------------------------- |
+| node        | `node_exec()`        | TRUE      | 12.16.0      | C:/Program Files/nodejs/node.exe                                      |
+| chrome      | `chrome_exec()`      | TRUE      | 89.0.4389.82 | C:/Program Files (x86)/Google/Chrome/Application/chrome.exe           |
+| python      | `python_exec()`      | TRUE      | 3.9.1        | C:/Users/dgohe/AppData/Local/Programs/Python/Python39/python.exe      |
+| libreoffice | `libreoffice_exec()` | TRUE      | 7.1.0.3      | C:/Program Files/LibreOffice/program/soffice.com                      |
+| excel       | `excel_exec()`       | TRUE      | 16           | C:/Program Files/Microsoft Office/root/Office16/EXCEL.exe             |
+| powerpoint  | `powerpoint_exec()`  | TRUE      | 16           | C:/Program Files/Microsoft Office/root/Office16/POWERPNT.exe          |
+| pip         | `pip_exec()`         | TRUE      | 20.2.3       | C:/Users/dgohe/AppData/Local/Programs/Python/Python39/Scripts/pip.exe |
+| firefox     | `firefox_exec()`     | TRUE      | 86.0.1       | C:/Program Files/Mozilla Firefox/firefox.exe                          |
+| npm         | `npm_exec()`         | TRUE      | 6.13.4       | C:/Program Files/nodejs/npm.cmd                                       |
+| word        | `word_exec()`        | TRUE      | 16           | C:/Program Files/Microsoft Office/root/Office16/WINWORD.exe           |
 
 ## Motivations
 

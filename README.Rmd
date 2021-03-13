@@ -46,8 +46,16 @@ dat <- data.frame(
   exec_fun = paste0("`", exec_cmd, "()`"),
   available = vapply(execs, exec_available, FUN.VALUE = FALSE),
   version = vapply(execs, function(exec) format(exec_version(exec)), FUN.VALUE = NA_character_),
-  path = vapply(exec_cmd, function(cmd) do.call(cmd, list()), FUN.VALUE = NA_character_),
   stringsAsFactors = FALSE, row.names = NULL)
+
+path <- character(nrow(dat))
+path[dat$available] <- sapply(
+  exec_cmd[dat$available], 
+  function(cmd){
+    do.call(cmd, list())
+  })
+path[!dat$available] <- NA_character_
+dat$path <- path
 knitr::kable(dat)
 ```
 

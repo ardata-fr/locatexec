@@ -89,8 +89,9 @@ read_registry_app_path <- function(name){
 
   vapply(name, function(z){
     exec_path <- try(utils::readRegistry(paste0(regpath, z)), silent = TRUE)
-    if(inherits(exec_path, "try-error")) return(NA_character_)
-    absolute_path(exec_path$Path)
+    if(inherits(exec_path, "try-error")) NA_character_
+    else if(!is.null(exec_path$Path) && dir.exists(exec_path$Path)) absolute_path(exec_path$Path)
+    else NA_character_
   }, FUN.VALUE = NA_character_, USE.NAMES = FALSE)
 }
 
