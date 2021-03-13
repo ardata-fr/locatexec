@@ -7,8 +7,6 @@
 
 [![R build
 status](https://github.com/ardata-fr/locatexec/workflows/R-CMD-check/badge.svg)](https://github.com/ardata-fr/locatexec/actions)
-[![Lifecycle:
-maturing](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
 <!-- badges: end -->
 
 The package aims to allow the localization of external programs such as
@@ -21,46 +19,26 @@ operating systems.
 ``` r
 library(locatexec)
 
-if(exec_available("node"))
+if(exec_available("node")){
+  message(exec_version("node"))
   message(node_exec())
+}
+#> 12.18.2
 #> /usr/local/bin/node
-
-if(exec_available("npm"))
-  message(npm_exec())
-#> /usr/local/lib/node_modules/npm/bin/npm-cli.js
-
-if(exec_available("chrome"))
-  message(chrome_exec())
-#> /Applications/Google Chrome.app/Contents/MacOS/Google Chrome
-
-if(exec_available("firefox"))
-  message(firefox_exec())
-#> /Applications/Firefox.app/Contents/MacOS/firefox
-
-if(exec_available("python"))
-  message(python_exec())
-#> /Users/davidgohel/miniconda3/bin/python
-
-if(exec_available("pip"))
-  message(pip_exec())
-#> /Users/davidgohel/miniconda3/bin/pip
-
-if(exec_available("libreoffice"))
-  message(libreoffice_exec())
-#> /Applications/LibreOffice.app/Contents/MacOS/soffice
-
-if(exec_available("word"))
-  message(word_exec())
-#> /Applications/Microsoft Word.app/Contents/MacOS/Microsoft Word
-
-if(exec_available("powerpoint"))
-  message(powerpoint_exec())
-#> /Applications/Microsoft Word.app/Contents/MacOS/Microsoft PowerPoint
-
-if(exec_available("excel"))
-  message(excel_exec())
-#> /Applications/Microsoft Excel.app/Contents/MacOS/Microsoft Excel
 ```
+
+| exec        | exec\_fun            | available | version      | path                                                                       |
+| :---------- | :------------------- | :-------- | :----------- | :------------------------------------------------------------------------- |
+| node        | `node_exec()`        | TRUE      | 12.18.2      | /usr/local/bin/node                                                        |
+| chrome      | `chrome_exec()`      | TRUE      | 89.0.4389.82 | /Applications/Google Chrome.app/Contents/MacOS/Google Chrome               |
+| python      | `python_exec()`      | TRUE      | 3.9.1        | /usr/local/bin/python3                                                     |
+| libreoffice | `libreoffice_exec()` | TRUE      | 7.1.0.3      | /Applications/LibreOffice.app/Contents/MacOS/soffice                       |
+| excel       | `excel_exec()`       | TRUE      | 16.46        | /Applications/Microsoft Excel.app/Contents/MacOS/Microsoft Excel           |
+| powerpoint  | `powerpoint_exec()`  | TRUE      | 16.46        | /Applications/Microsoft PowerPoint.app/Contents/MacOS/Microsoft PowerPoint |
+| pip         | `pip_exec()`         | TRUE      | 20.3.3       | /usr/local/bin/pip3                                                        |
+| firefox     | `firefox_exec()`     | TRUE      | 86.0.1       | /Applications/Firefox.app/Contents/MacOS/firefox                           |
+| npm         | `npm_exec()`         | TRUE      | 6.14.5       | /usr/local/bin/npm                                                         |
+| word        | `word_exec()`        | TRUE      | 16.46        | /Applications/Microsoft Word.app/Contents/MacOS/Microsoft Word             |
 
 ## Motivations
 

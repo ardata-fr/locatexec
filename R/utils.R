@@ -84,35 +84,36 @@ match_version <- function(exec_files, versions, match_version = NULL){
 }
 
 read_registry_app_path <- function(name){
+  name <- tolower(name)
   regpath <- "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\App paths\\"
-  exec_path <- try(utils::readRegistry(paste0(regpath, name)), silent = TRUE)
-  if(inherits(exec_path, "try-error")) return(NA_character_)
-  absolute_path(exec_path$Path)
+
+  vapply(name, function(z){
+    exec_path <- try(utils::readRegistry(paste0(regpath, z)), silent = TRUE)
+    if(inherits(exec_path, "try-error")) return(NA_character_)
+    absolute_path(exec_path$Path)
+  }, FUN.VALUE = NA_character_, USE.NAMES = FALSE)
 }
 
 read_registry_app_version <- function(name){
-  key <- paste0(name, "\\CurVer")
-  v_registry <- try(utils::readRegistry(key, hive = "HCR"), silent = TRUE)
-  if(!inherits(v_registry, "try-error"))
-    version <- v_registry$`(Default)`
-  else version <- "0"
-
-  version
+  vapply(name, function(z){
+    key <- paste0(z, "\\CurVer")
+    v_registry <- try(utils::readRegistry(key, hive = "HCR"), silent = TRUE)
+    if(!inherits(v_registry, "try-error"))
+      version <- v_registry$`(Default)`
+    else version <- "0"
+    version
+  }, FUN.VALUE = NA_character_, USE.NAMES = FALSE)
 }
 
 exec_candidates <- function(sources, exec){
+
+  sources <- vapply(sources, absolute_path, NA_character_, USE.NAMES = FALSE)
   all_com <- expand.grid(
     dir = sources,
     exec = main_exec(exec),
     stringsAsFactors = FALSE)
-
   candidates <- file.path(all_com$dir, all_com$exec)
-
-  candidates <- vapply(candidates, absolute_path, NA_character_, USE.NAMES = FALSE)
-
   candidates <- Filter(function(z) !is.na(z) && file.exists(z), candidates)
-
   candidates <- candidates[!grepl("Microsoft/WindowsApps", candidates, fixed = TRUE)]
-
   candidates
 }

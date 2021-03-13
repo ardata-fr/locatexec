@@ -7,10 +7,19 @@
 #' The function mimic the behavior of the `rmarkdown::find_pandoc()`
 #' function in order to locate programs.
 #'
-#' Some methods work differently depending on the OS. Under Windows, the search
+#' Some methods work differently depending on the OS or the program:
+#'
+#' * Under Windows, the search
 #' for 'Google Chrome', 'Mozilla Firefox', 'Microsoft Word', 'Microsoft PowerPoint'
 #' and 'Microsoft Excel' is done in the registry, which means that only one version
-#' can be chosen, the one referenced in the registry.
+#' can be chosen, the one referenced in the registry. (you still can force another path
+#' with argument `dir`).
+#' * 'Microsoft Word', 'Microsoft PowerPoint' and 'Microsoft Excel' can not be located
+#' on linux OS.
+#' * the search for 'pip' is using the result of the search of 'python' to find the corresponding
+#' 'pip' executable.
+#'
+#'
 #' @inheritParams exec_version
 #' @param cache if `FALSE`, search for the executable again even if the
 #' executable has been found previously.
@@ -18,9 +27,8 @@
 #' the executable may be found.
 #' @param version The version of the executable to look for (e.g., \code{"14.15.4"}).
 #' If NULL (the default), it searches for the highest version.
-#' @return A list containing the directory and version of the executable if found. If not found,
-#' the version will be `0` and the dir will be `NULL`. The list will contain also the executable
-#' names per operating system.
+#' @return A list containing the path of the executable and its version if found. If not found,
+#' the version will be `0` and the `exec_file` will be `NULL`.
 #' @export
 #' @examples
 #' exec_locate("firefox")
@@ -59,7 +67,7 @@ exec_locate.chrome <- function(exec, cache = TRUE, dir = NULL, version = NULL){
   } else if(is_osx()){
     sources <- "/Applications/Google Chrome.app/Contents/MacOS"
   } else if(is_windows()){
-    sources <- read_registry_app_path("chrome.exe")
+    sources <- read_registry_app_path(main_exec(exec))
   } else {
     sources <- c(
       dirname(Sys.which(exec)),
@@ -84,7 +92,7 @@ exec_locate.firefox <- function(exec, cache = TRUE, dir = NULL, version = NULL){
   } else if(is_osx()){
     sources <- "/Applications/Firefox.app/Contents/MacOS"
   } else if(is_windows()){
-    sources <- read_registry_app_path("firefox.exe")
+    sources <- read_registry_app_path(main_exec(exec))
   } else {
     sources <- c(
       dirname(Sys.which(exec)),
@@ -110,7 +118,7 @@ exec_locate.excel <- function(exec, cache = TRUE, dir = NULL, version = NULL){
   } else if(is_osx()){
     sources <- "/Applications/Microsoft Excel.app/Contents/MacOS"
   } else if(is_windows()){
-    sources <- read_registry_app_path("excel.exe")
+    sources <- read_registry_app_path(main_exec(exec))
   } else {
     sources <- c(
       dirname(Sys.which(exec)),
@@ -135,7 +143,7 @@ exec_locate.word <- function(exec, cache = TRUE, dir = NULL, version = NULL){
   } else if(is_osx()){
     sources <- "/Applications/Microsoft Word.app/Contents/MacOS"
   } else if(is_windows()){
-    sources <- read_registry_app_path("Winword.exe")
+    sources <- read_registry_app_path(main_exec(exec))
   } else {
     sources <- c(
       dirname(Sys.which(exec)),
@@ -160,7 +168,7 @@ exec_locate.powerpoint <- function(exec, cache = TRUE, dir = NULL, version = NUL
   } else if(is_osx()){
     sources <- "/Applications/Microsoft PowerPoint.app/Contents/MacOS"
   } else if(is_windows()){
-    sources <- read_registry_app_path("powerpnt.exe")
+    sources <- read_registry_app_path(main_exec(exec))
   } else {
     sources <- c(
       dirname(Sys.which(exec)),
@@ -185,6 +193,7 @@ exec_locate.libreoffice <- function(exec, cache = TRUE, dir = NULL, version = NU
     sources <- c(
       dirname(Sys.which("soffice")),
       "/Applications/LibreOffice.app/Contents/MacOS",
+      "~/Applications/LibreOffice.app/Contents/MacOS",
       "/usr/local/bin",
       "/usr/bin",
       "C:/Program Files/LibreOffice/program"
@@ -276,7 +285,6 @@ exec_locate.python <- function(exec, cache = TRUE, dir = NULL, version = NULL){
   if (!cache) set_exec_info(NULL, exec = exec)
   if(exe_located(exec = exec, version = version)) return(as.list(.exec$python))
 
-  # look up python in potential sources unless user has supplied `dir`
   if(is.null(dir)){
     sources <- c(
       build_python_dir_candidates(),

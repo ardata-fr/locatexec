@@ -37,11 +37,7 @@ a specific or greater version).
 }
 \examples{
 if (exec_available("python")) {
-  cat("\npython", as.character(exec_version("python")), "is available!\n")
-}
-py_path <- "~/../AppData/Local/Programs/Python/Python39"
-if(dir.exists(py_path)){
-  exec_locate("python", dir = py_path, cache = FALSE)
+  cat("python", as.character(exec_version("python")), "is available!\n")
 }
 if(exec_available("python", "3.9")) {
   cat("required version of python is available!\n")

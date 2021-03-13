@@ -32,9 +32,8 @@ the executable may be found.}
 If NULL (the default), it searches for the highest version.}
 }
 \value{
-A list containing the directory and version of the executable if found. If not found,
-the version will be \code{0} and the dir will be \code{NULL}. The list will contain also the executable
-names per operating system.
+A list containing the path of the executable and its version if found. If not found,
+the version will be \code{0} and the \code{exec_file} will be \code{NULL}.
 }
 \description{
 Searches for an executable in a some places and use the
@@ -43,10 +42,18 @@ highest version found (unless a specific version is requested).
 The function mimic the behavior of the \code{rmarkdown::find_pandoc()}
 function in order to locate programs.
 
-Some methods work differently depending on the OS. Under Windows, the search
+Some methods work differently depending on the OS or the program:
+\itemize{
+\item Under Windows, the search
 for 'Google Chrome', 'Mozilla Firefox', 'Microsoft Word', 'Microsoft PowerPoint'
 and 'Microsoft Excel' is done in the registry, which means that only one version
-can be chosen, the one referenced in the registry.
+can be chosen, the one referenced in the registry. (you still can force another path
+with argument \code{dir}).
+\item 'Microsoft Word', 'Microsoft PowerPoint' and 'Microsoft Excel' can not be located
+on linux OS.
+\item the search for 'pip' is using the result of the search of 'python' to find the corresponding
+'pip' executable.
+}
 }
 \section{libreoffice}{
 
