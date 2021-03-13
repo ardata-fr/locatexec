@@ -9,44 +9,44 @@
 #' @return a logical indicating whether the executable is available.
 #' @examples
 #' if (exec_available("python")) {
-#'   cat("python", as.character(exec_version("python")), "is available!\\n")
+#'   cat("\npython", as.character(exec_version("python")), "is available!\n")
 #' }
 #' py_path <- "~/../AppData/Local/Programs/Python/Python39"
 #' if(dir.exists(py_path)){
 #'   exec_locate("python", dir = py_path, cache = FALSE)
 #' }
 #' if(exec_available("python", "3.9")) {
-#'   cat("required version of python is available!\\n")
+#'   cat("required version of python is available!\n")
 #' }
 #' if (exec_available("pip")) {
-#'   cat("pip", as.character(exec_version("pip")), "is available!\\n")
+#'   cat("pip", as.character(exec_version("pip")), "is available!\n")
 #' }
 #' if (exec_available("pip", "19.3")) {
-#'   cat("pip", as.character(exec_version("pip")), "is available!\\n")
+#'   cat("pip", as.character(exec_version("pip")), "is available!\n")
 #' }
 #' if (exec_available("chrome")) {
-#'   cat("chrome", as.character(exec_version("chrome")), "is available!\\n")
+#'   cat("chrome", as.character(exec_version("chrome")), "is available!\n")
 #' }
 #' if (exec_available("firefox")) {
-#'   cat("firefox", as.character(exec_version("firefox")), "is available!\\n")
+#'   cat("firefox", as.character(exec_version("firefox")), "is available!\n")
 #' }
 #' if (exec_available("node")) {
-#'   cat("node.js", as.character(exec_version("node")), "is available!\\n")
+#'   cat("node.js", as.character(exec_version("node")), "is available!\n")
 #' }
 #' if (exec_available("npm")) {
-#'   cat("npm", as.character(exec_version("npm")), "is available!\\n")
+#'   cat("npm", as.character(exec_version("npm")), "is available!\n")
 #' }
 #' if (exec_available("npm", version = "10.13.0")) {
-#'   cat("npm", as.character(exec_version("npm")), "is available!\\n")
+#'   cat("npm", as.character(exec_version("npm")), "is available!\n")
 #' }
 #' if (exec_available("excel")) {
-#'   cat("excel", as.character(exec_version("excel")), "is available!\\n")
+#'   cat("excel", as.character(exec_version("excel")), "is available!\n")
 #' }
 #' if (exec_available("word")) {
-#'   cat("word", as.character(exec_version("word")), "is available!\\n")
+#'   cat("word", as.character(exec_version("word")), "is available!\n")
 #' }
 #' if (exec_available("powerpoint")) {
-#'   cat("powerpoint", as.character(exec_version("powerpoint")), "is available!\\n")
+#'   cat("powerpoint", as.character(exec_version("powerpoint")), "is available!\n")
 #' }
 #' @export
 exec_available <- function(exec, version = NULL, error = FALSE) {

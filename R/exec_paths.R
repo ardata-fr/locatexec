@@ -10,7 +10,7 @@
 chrome_exec <- function() {
   exec_locate("chrome")
   exec_available("chrome", error = TRUE)
-  file.path(.exec$chrome$dir, main_exec("chrome"))
+  .exec$chrome$exec_file
 }
 
 #' @export
@@ -25,7 +25,7 @@ chrome_exec <- function() {
 firefox_exec <- function() {
   exec_locate("firefox")
   exec_available("firefox", error = TRUE)
-  file.path(.exec$firefox$dir, main_exec("firefox"))
+  .exec$firefox$exec_file
 }
 
 #' @export
@@ -41,7 +41,7 @@ firefox_exec <- function() {
 libreoffice_exec <- function() {
   exec_locate("libreoffice")
   exec_available("libreoffice", error = TRUE)
-  file.path(.exec$libreoffice$dir, main_exec("libreoffice"))
+  .exec$libreoffice$exec_file
 }
 
 #' @export
@@ -55,7 +55,7 @@ libreoffice_exec <- function() {
 #'   message(node_exec())
 node_exec <- function() {
   exec_locate("node")
-  absolute_path(file.path(.exec$node$dir, main_exec("node")))
+  .exec$node$exec_file
 }
 
 #' @export
@@ -69,7 +69,7 @@ node_exec <- function() {
 #'   message(npm_exec())
 npm_exec <- function() {
   exec_locate("npm")
-  absolute_path(file.path(.exec$npm$dir, main_exec("npm")))
+  .exec$npm$exec_file
 }
 
 
@@ -85,7 +85,7 @@ npm_exec <- function() {
 python_exec <- function() {
   exec_locate("python")
   exec_available("python", error = TRUE)
-  file.path(.exec$python$dir, main_exec("python"))
+  .exec$python$exec_file
 }
 
 #' @export
@@ -100,7 +100,7 @@ python_exec <- function() {
 pip_exec <- function() {
   exec_locate("pip")
   exec_available("pip", error = TRUE)
-  file.path(.exec$pip$dir, main_exec("pip"))
+  .exec$pip$exec_file
 }
 
 #' @export
@@ -115,7 +115,7 @@ pip_exec <- function() {
 word_exec <- function() {
   exec_locate("word")
   exec_available("word", error = TRUE)
-  file.path(.exec$word$dir, main_exec("word"))
+  .exec$word$exec_file
 }
 
 #' @export
@@ -130,7 +130,7 @@ word_exec <- function() {
 powerpoint_exec <- function() {
   exec_locate("powerpoint")
   exec_available("powerpoint", error = TRUE)
-  file.path(.exec$powerpoint$dir, main_exec("powerpoint"))
+  .exec$powerpoint$exec_file
 }
 
 #' @export
@@ -145,5 +145,5 @@ powerpoint_exec <- function() {
 excel_exec <- function() {
   exec_locate("excel")
   exec_available("excel", error = TRUE)
-  file.path(.exec$excel$dir, main_exec("excel"))
+  .exec$excel$exec_file
 }

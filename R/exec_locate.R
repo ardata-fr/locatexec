@@ -52,7 +52,7 @@ exec_locate <- function(exec, cache = TRUE, dir = NULL, version = NULL){
 #' @export
 exec_locate.chrome <- function(exec, cache = TRUE, dir = NULL, version = NULL){
   if (!cache) set_exec_info(NULL, exec = exec)
-  if(exe_located(exec = exec, version = version)) return(as.list(.exec$chrome))
+  if(exe_located(exec = exec, version = version)) return(as.list(.exec[[exec]]))
 
   if(!is.null(dir)){
     sources <- absolute_path(dir)
@@ -67,17 +67,11 @@ exec_locate.chrome <- function(exec, cache = TRUE, dir = NULL, version = NULL){
       "/usr/bin"
     )
   }
-  sources <- sanitize_paths(sources)
 
-  versions <- lapply(sources, function(src) {
-    if(valid_exec_dir(src))
-      get_chrome_version(src)
-    else
-      numeric_version("0")
-  })
+  compete_source_versions(sources = sources, exec = exec,
+                          version_fun = get_chrome_version,
+                          version = version)
 
-  match_v <- match_version(sources, versions, match_version = version)
-  set_exec_info(match_v$dir, match_v$ver, exec = exec)
   as.list(.exec$chrome)
 }
 #' @export
@@ -98,17 +92,11 @@ exec_locate.firefox <- function(exec, cache = TRUE, dir = NULL, version = NULL){
       "/usr/bin"
     )
   }
-  sources <- sanitize_paths(sources)
 
-  versions <- lapply(sources, function(src) {
-    if(valid_exec_dir(src))
-      extract_numeric_version(src, exec, version_flag = "-version")
-    else
-      numeric_version("0")
-  })
+  compete_source_versions(sources = sources, exec = exec,
+                          version_fun = extract_numeric_version,
+                          version = version)
 
-  match_v <- match_version(sources, versions, match_version = version)
-  set_exec_info(match_v$dir, match_v$ver, exec = exec)
   as.list(.exec$firefox)
 }
 
@@ -130,18 +118,12 @@ exec_locate.excel <- function(exec, cache = TRUE, dir = NULL, version = NULL){
       "/usr/bin"
     )
   }
-  sources <- sanitize_paths(sources)
 
-  versions <- lapply(sources, function(src) {
-    if(valid_exec_dir(src))
-      get_excel_version(src)
-    else
-      numeric_version("0")
-  })
+  compete_source_versions(sources = sources, exec = exec,
+                          version_fun = get_excel_version,
+                          version = version)
 
-  match_v <- match_version(sources, versions, match_version = version)
-  set_exec_info(match_v$dir, match_v$ver, exec = exec)
-  as.list(.exec$word)
+  as.list(.exec$excel)
 }
 #' @export
 exec_locate.word <- function(exec, cache = TRUE, dir = NULL, version = NULL){
@@ -161,17 +143,11 @@ exec_locate.word <- function(exec, cache = TRUE, dir = NULL, version = NULL){
       "/usr/bin"
     )
   }
-  sources <- sanitize_paths(sources)
 
-  versions <- lapply(sources, function(src) {
-    if(valid_exec_dir(src))
-      get_word_version(src)
-    else
-      numeric_version("0")
-  })
+  compete_source_versions(sources = sources, exec = exec,
+                          version_fun = get_word_version,
+                          version = version)
 
-  match_v <- match_version(sources, versions, match_version = version)
-  set_exec_info(match_v$dir, match_v$ver, exec = exec)
   as.list(.exec$word)
 }
 #' @export
@@ -182,7 +158,7 @@ exec_locate.powerpoint <- function(exec, cache = TRUE, dir = NULL, version = NUL
   if(!is.null(dir)){
     sources <- absolute_path(dir)
   } else if(is_osx()){
-    sources <- "/Applications/Microsoft Word.app/Contents/MacOS"
+    sources <- "/Applications/Microsoft PowerPoint.app/Contents/MacOS"
   } else if(is_windows()){
     sources <- read_registry_app_path("powerpnt.exe")
   } else {
@@ -192,17 +168,11 @@ exec_locate.powerpoint <- function(exec, cache = TRUE, dir = NULL, version = NUL
       "/usr/bin"
     )
   }
-  sources <- sanitize_paths(sources)
 
-  versions <- lapply(sources, function(src) {
-    if(valid_exec_dir(src))
-      get_powerpoint_version(src)
-    else
-      numeric_version("0")
-  })
+  compete_source_versions(sources = sources, exec = exec,
+                          version_fun = get_powerpoint_version,
+                          version = version)
 
-  match_v <- match_version(sources, versions, match_version = version)
-  set_exec_info(match_v$dir, match_v$ver, exec = exec)
   as.list(.exec$powerpoint)
 }
 
@@ -223,19 +193,9 @@ exec_locate.libreoffice <- function(exec, cache = TRUE, dir = NULL, version = NU
     sources <- dir
   }
 
-  sources <- sanitize_paths(sources)
-
-  versions <- lapply(sources, function(src) {
-    if(valid_exec_dir(src)){
-      extract_numeric_version(src, "soffice", win_ext = ".com")
-    } else
-      numeric_version("0")
-  })
-
-
-  match_v <- match_version(sources, versions, match_version = version)
-
-  set_exec_info(exec = exec, match_v$dir, match_v$ver)
+  compete_source_versions(sources = sources, exec = exec,
+                          version_fun = extract_numeric_version,
+                          version = version)
 
   as.list(.exec$libreoffice)
 }
@@ -253,18 +213,10 @@ exec_locate.node <- function(exec, cache = TRUE, dir = NULL, version = NULL){
   } else {
     sources <- dir
   }
-  sources <- sanitize_paths(sources)
 
-  versions <- lapply(sources, function(src) {
-    if(valid_exec_dir(src))
-      extract_numeric_version(src, exec)
-    else
-      numeric_version("0")
-  })
-
-  match_v <- match_version(sources, versions, match_version = version)
-
-  set_exec_info(match_v$dir, match_v$ver, exec = exec)
+  compete_source_versions(sources = sources, exec = exec,
+                          version_fun = extract_numeric_version,
+                          version = version)
 
   as.list(.exec$node)
 }
@@ -283,16 +235,10 @@ exec_locate.npm <- function(exec, cache = TRUE, dir = NULL, version = NULL){
   } else {
     sources <- dir
   }
-  sources <- sanitize_paths(sources)
 
-  versions <- lapply(sources, function(src) {
-    if(valid_exec_dir(src))
-      extract_numeric_version(src, exec, win_ext = ".cmd")
-    else
-      numeric_version("0")
-  })
-  match_v <- match_version(sources, versions, match_version = version)
-  set_exec_info(match_v$dir, match_v$ver, exec = exec)
+  compete_source_versions(sources = sources, exec = exec,
+                          version_fun = extract_numeric_version,
+                          version = version)
   as.list(.exec$npm)
 }
 
@@ -332,7 +278,6 @@ exec_locate.python <- function(exec, cache = TRUE, dir = NULL, version = NULL){
 
   # look up python in potential sources unless user has supplied `dir`
   if(is.null(dir)){
-
     sources <- c(
       build_python_dir_candidates(),
       dirname(Sys.which(exec)),
@@ -342,17 +287,11 @@ exec_locate.python <- function(exec, cache = TRUE, dir = NULL, version = NULL){
     sources <- dir
   }
 
-  sources <- sanitize_paths(sources)
+  compete_source_versions(sources = sources,
+                          exec = exec,
+                          version_fun = extract_numeric_version,
+                          version = version)
 
-  versions <- lapply(sources, function(src) {
-    if(valid_exec_dir(src))
-      extract_numeric_version(src, exec)
-    else
-      numeric_version("0")
-  })
-
-  match_v <- match_version(sources, versions, match_version = version)
-  set_exec_info(match_v$dir, match_v$ver, exec = exec)
   as.list(.exec$python)
 }
 
@@ -361,37 +300,28 @@ exec_locate.pip <- function(exec, cache = TRUE, dir = NULL, version = NULL){
   if (!cache) set_exec_info(NULL, exec = exec)
   if(exe_located(exec = exec, version = version)) return(as.list(.exec$pip))
 
-  # look up pip in potential sources unless user has supplied `dir`
-  if(is.null(dir)){
-    sources <- c(
-      build_python_dir_candidates(),
-      dirname(Sys.which("python")),
-      "/usr/local/bin",
-      "/usr/bin")
-  } else {
-    sources <- dir
-  }
+  python <- exec_locate.python(exec = "python", cache = cache, dir = dir, version = version)
+  if(!is.null(python$exec_file))
+    compete_source_versions(sources = dirname(python$exec_file),
+                          exec = exec,
+                          version_fun = extract_numeric_version,
+                          version = version)
 
-  sources <- sanitize_paths(sources)
-
-  versions <- lapply(sources, function(src) {
-    if(valid_exec_dir(src))
-      extract_numeric_version(src, "python")
-    else
-      numeric_version("0")
-  })
-
-  match_v <- match_version(sources, versions, match_version = version)
-  if(!is_windows())
-    match_v$ver <- extract_numeric_version(match_v$dir, "pip")
-  else match_v$ver <- extract_numeric_version(match_v$dir, "Scripts/pip")
-  set_exec_info(match_v$dir, match_v$ver, exec = exec)
   as.list(.exec$pip)
+}
+
+# utils ----
+compete_source_versions <- function(sources, exec, version_fun = extract_numeric_version, version){
+  candidates <- exec_candidates(sources = sources, exec = exec)
+  versions <- lapply(candidates, version_fun)
+
+  match_v <- match_version(candidates, versions, match_version = version)
+  set_exec_info(match_v$exec_file, match_v$ver, exec = exec)
 }
 
 # some specific version reader ----
 
-get_word_version <- function(chrome_dir) {
+get_word_version <- function(...) {
   if(is_windows()){
     version <- read_registry_app_version("Word.Application")
   } else if(is_osx()){
@@ -409,7 +339,7 @@ get_word_version <- function(chrome_dir) {
   version <- head(version, n = 1)
   numeric_version(version)
 }
-get_powerpoint_version <- function(chrome_dir) {
+get_powerpoint_version <- function(...) {
   if(is_windows()){
     version <- read_registry_app_version("PowerPoint.Application")
   } else if(is_osx()){
@@ -427,7 +357,7 @@ get_powerpoint_version <- function(chrome_dir) {
   version <- head(version, n = 1)
   numeric_version(version)
 }
-get_excel_version <- function(chrome_dir) {
+get_excel_version <- function(...) {
   if(is_windows()){
     version <- read_registry_app_version("Excel.Application")
   } else if(is_osx()){
@@ -446,7 +376,7 @@ get_excel_version <- function(chrome_dir) {
   numeric_version(version)
 }
 
-get_chrome_version <- function(chrome_dir) {
+get_chrome_version <- function(exec_chrome) {
   if(is_windows()){
     chrome_v_registry <- try(utils::readRegistry("Software\\Google\\Chrome\\BLBeacon", hive = "HCU"),
                              silent = TRUE)
@@ -454,8 +384,7 @@ get_chrome_version <- function(chrome_dir) {
       version <- chrome_v_registry$version
     else return(numeric_version("0"))
   } else {
-    file_exe <- main_exec("chrome")
-    info <- read_version(dir_exe = chrome_dir, file_exe = file_exe)
+    info <- read_version(exec_chrome)
     if(any(is.na(info))) return(numeric_version("0"))
     version <- strsplit(info, split = " ")[[1]][3]
   }
