@@ -23,10 +23,8 @@ catch_error <- function(path, version_flag){
 
   writeLines(text = paste(path, version_flag, ">", log, "2>&1"), cmd)
   Sys.chmod(cmd, mode = "755")
-  old_warn <- getOption("warn")
-  options(warn = -1)
-  try(system2(cmd), silent = TRUE)
-  options(warn = old_warn)
+
+  suppressWarnings(try(system2(cmd), silent = TRUE))
 
   message("The following command failed: ", paste(path, version_flag))
   message("with following log:")

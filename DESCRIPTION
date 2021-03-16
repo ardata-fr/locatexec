@@ -12,7 +12,7 @@ Description: A set of functions to locate some programs
  'Node.js', 'npm', 'LibreOffice', 'Microsoft Word', 'Microsoft PowerPoint', 
  'Microsoft Excel', 'Python', 'pip', 'Mozilla Firefox' and 'Google Chrome'.
  User can test the availability of a program with eventually a version 
- and call it with function system2 or system. This allows the use of 
+ and call it with function system2() or system(). This allows the use of 
  a single function to retrieve the path to a program regardless of the 
  operating system and its configuration.
 License: MIT + file LICENSE
