@@ -72,16 +72,17 @@ documentation of other packages.
 
 ## Installation
 
-You can install the development version from GitHub with:
+You can install the CRAN version with:
 
 ``` r
-# install.packages("devtools")
-devtools::install_github("ardata-fr/locatexec")
+install.packages("locatexec")
 ```
 
 ## Related work
 
 * Packages pagedown is providing `find_chrome()` for finding "Google Chrome".
+
+* Packages findpython is providing `find_python_cmd()` for finding "python".
 
 * If you want to go deeper with 'R' and 'node.js', I recommend 
 package [packer](https://packer.john-coene.com/).
