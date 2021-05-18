@@ -9,7 +9,7 @@ read_version <- function(path, version_flag = "--version") {
   }
 
   info <- try(system2(path, args = version_flag,
-                      stderr = TRUE, stdout = TRUE), silent = TRUE)
+                      stderr = TRUE, stdout = TRUE, timeout = 20), silent = TRUE)
   if(inherits(info, "try-error")) {
     message(catch_error(path, version_flag))
     info <- NA_character_
@@ -24,7 +24,7 @@ catch_error <- function(path, version_flag){
   writeLines(text = paste(path, version_flag, ">", log, "2>&1"), cmd)
   Sys.chmod(cmd, mode = "755")
 
-  suppressWarnings(try(system2(cmd), silent = TRUE))
+  suppressWarnings(try(system2(cmd, timeout = 20), silent = TRUE))
 
   message("The following command failed: ", paste(path, version_flag))
   message("with following log:")

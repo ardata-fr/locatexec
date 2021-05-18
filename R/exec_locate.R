@@ -337,7 +337,7 @@ get_word_version <- function(...) {
   } else if(is_osx()){
     version <- system2(command = "mdls",
                        args = c("-name", "kMDItemVersion", shQuote("/Applications/Microsoft Word.app")),
-                       stdout = TRUE, stderr = TRUE)
+                       stdout = TRUE, stderr = TRUE, timeout = 60)
     if(any(is.na(version))) return(numeric_version("0"))
   } else return(numeric_version("0"))
 
@@ -355,7 +355,7 @@ get_powerpoint_version <- function(...) {
   } else if(is_osx()){
     version <- system2(command = "mdls",
                        args = c("-name", "kMDItemVersion", shQuote("/Applications/Microsoft PowerPoint.app")),
-                       stdout = TRUE, stderr = TRUE)
+                       stdout = TRUE, stderr = TRUE, timeout = 60)
     if(any(is.na(version))) return(numeric_version("0"))
   } else return(numeric_version("0"))
 
@@ -373,7 +373,7 @@ get_excel_version <- function(...) {
   } else if(is_osx()){
     version <- system2(command = "mdls",
                        args = c("-name", "kMDItemVersion", shQuote("/Applications/Microsoft Excel.app")),
-                       stdout = TRUE, stderr = TRUE)
+                       stdout = TRUE, stderr = TRUE, timeout = 60)
     if(any(is.na(version))) return(numeric_version("0"))
   } else return(numeric_version("0"))
 
