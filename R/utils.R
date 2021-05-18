@@ -16,10 +16,10 @@
 .exec_names$npm <- list(exec_win = "npm.cmd", exec_osx = "npm", exec_unix = "npm")
 .exec_names$chrome <- list(exec_win = "chrome.exe", exec_osx = "Google Chrome", exec_unix = "chrome")
 .exec_names$libreoffice <- list(exec_win = "soffice.com", exec_osx = "soffice", exec_unix = "soffice")
-.exec_names$python <- list(exec_win = "python.exe", exec_osx = c("python", "python2", "python3"),
-                           exec_unix = c("python", "python2", "python3"))
+.exec_names$python <- list(exec_win = "python.exe", exec_osx = c("python3", "python2", "python"),
+                           exec_unix = c("python3", "python2", "python"))
 .exec_names$pip <- list(exec_win = c("Scripts/pip.exe", "Scripts/pip2.exe", "Scripts/pip3.exe"),
-                        exec_osx = c("pip", "pip2", "pip3"), exec_unix = c("pip", "pip2", "pip3"))
+                        exec_osx = c("pip3", "pip2", "pip"), exec_unix = c("pip3", "pip2", "pip"))
 .exec_names$firefox <- list(exec_win = "firefox.exe", exec_osx = "firefox", exec_unix = "firefox")
 .exec_names$excel <- list(exec_win = "EXCEL.exe", exec_osx = "Microsoft Excel", exec_unix = NA_character_)
 .exec_names$powerpoint <- list(exec_win = "POWERPNT.exe", exec_osx = "Microsoft PowerPoint", exec_unix = NA_character_)
