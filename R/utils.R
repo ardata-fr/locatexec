@@ -1,4 +1,4 @@
-# global ----
+# global ---- # test
 .exec <- new.env()
 .exec$node <- list(exec_file = NULL, version = NULL)
 .exec$npm <- list(exec_file = NULL, version = NULL)
