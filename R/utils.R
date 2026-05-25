@@ -52,7 +52,7 @@ exe_located <- function(exec, version){
 min_version_available <- function(exec, version){
   !is.null(.exec[[exec]]$exec_file) &&
     (is.null(version) ||
-       version >= as.numeric_version(.exec[[exec]]$version))
+       as.numeric_version(.exec[[exec]]$version) >= version)
 }
 
 #' @importFrom utils head
