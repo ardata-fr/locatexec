@@ -19,15 +19,15 @@ if(exec_available("libreoffice")) {
 }
 }
 \seealso{
-Other executable full path: 
-\code{\link{chrome_exec}()},
-\code{\link{excel_exec}()},
-\code{\link{firefox_exec}()},
-\code{\link{node_exec}()},
-\code{\link{npm_exec}()},
-\code{\link{pip_exec}()},
-\code{\link{powerpoint_exec}()},
-\code{\link{python_exec}()},
-\code{\link{word_exec}()}
+Other executable full path:
+\code{\link[=chrome_exec]{chrome_exec()}},
+\code{\link[=excel_exec]{excel_exec()}},
+\code{\link[=firefox_exec]{firefox_exec()}},
+\code{\link[=node_exec]{node_exec()}},
+\code{\link[=npm_exec]{npm_exec()}},
+\code{\link[=pip_exec]{pip_exec()}},
+\code{\link[=powerpoint_exec]{powerpoint_exec()}},
+\code{\link[=python_exec]{python_exec()}},
+\code{\link[=word_exec]{word_exec()}}
 }
 \concept{executable full path}

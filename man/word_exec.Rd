@@ -18,15 +18,15 @@ if(exec_available("word"))
   message(word_exec())
 }
 \seealso{
-Other executable full path: 
-\code{\link{chrome_exec}()},
-\code{\link{excel_exec}()},
-\code{\link{firefox_exec}()},
-\code{\link{libreoffice_exec}()},
-\code{\link{node_exec}()},
-\code{\link{npm_exec}()},
-\code{\link{pip_exec}()},
-\code{\link{powerpoint_exec}()},
-\code{\link{python_exec}()}
+Other executable full path:
+\code{\link[=chrome_exec]{chrome_exec()}},
+\code{\link[=excel_exec]{excel_exec()}},
+\code{\link[=firefox_exec]{firefox_exec()}},
+\code{\link[=libreoffice_exec]{libreoffice_exec()}},
+\code{\link[=node_exec]{node_exec()}},
+\code{\link[=npm_exec]{npm_exec()}},
+\code{\link[=pip_exec]{pip_exec()}},
+\code{\link[=powerpoint_exec]{powerpoint_exec()}},
+\code{\link[=python_exec]{python_exec()}}
 }
 \concept{executable full path}

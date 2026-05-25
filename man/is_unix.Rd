@@ -16,8 +16,8 @@ Test if the operating system is "unix"
 is_unix()
 }
 \seealso{
-Other operating system testing: 
-\code{\link{is_osx}()},
-\code{\link{is_windows}()}
+Other operating system testing:
+\code{\link[=is_osx]{is_osx()}},
+\code{\link[=is_windows]{is_windows()}}
 }
 \concept{operating system testing}
