@@ -1,7 +1,7 @@
 Type: Package
 Package: locatexec
 Title: Detection and Localization of Executable Files
-Version: 0.1.2
+Version: 0.2.0
 Authors@R: c(
     person("David", "Gohel", , "david.gohel@ardata.fr", role = c("aut", "cre")),
     person("ArData", role = "cph")
@@ -16,8 +16,7 @@ Description: A set of functions to locate some programs available on the
     path to a program regardless of the operating system and its
     configuration.
 License: MIT + file LICENSE
-URL: https://ardata-fr.github.io/locatexec/,
-    https://github.com/ardata-fr/locatexec
+URL: https://ardata-fr.github.io/locatexec/
 BugReports: https://github.com/ardata-fr/locatexec/issues
 Imports: 
     utils

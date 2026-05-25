@@ -1,8 +1,7 @@
 
 ## Test environments
-* local R installation, R 4.0.5
-* Ubuntu, mac os and windows (on Github), R 4.0.5
-* win-builder (older, release and devel)
+* local R installation, R 4.5.3
+* win-builder (release and devel)
 
 ## R CMD check results
 

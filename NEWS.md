@@ -1,4 +1,4 @@
-# locatexec 0.1.2
+# locatexec 0.2.0
 
 * Add detection of the 'air' executable (R formatter).
 * Add detection of the 'Pandoc' executable.
