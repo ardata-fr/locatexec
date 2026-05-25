@@ -35,6 +35,9 @@
 #' if (exec_available("npm", version = "10.13.0")) {
 #'   cat("npm", as.character(exec_version("npm")), "is available!\n")
 #' }
+#' if (exec_available("air")) {
+#'   cat("air", as.character(exec_version("air")), "is available!\n")
+#' }
 #' if (exec_available("excel")) {
 #'   cat("excel", as.character(exec_version("excel")), "is available!\n")
 #' }

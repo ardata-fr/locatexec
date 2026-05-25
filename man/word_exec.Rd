@@ -19,6 +19,7 @@ if(exec_available("word"))
 }
 \seealso{
 Other executable full path:
+\code{\link[=air_exec]{air_exec()}},
 \code{\link[=chrome_exec]{chrome_exec()}},
 \code{\link[=excel_exec]{excel_exec()}},
 \code{\link[=firefox_exec]{firefox_exec()}},

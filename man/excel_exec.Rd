@@ -19,6 +19,7 @@ if(exec_available("excel"))
 }
 \seealso{
 Other executable full path:
+\code{\link[=air_exec]{air_exec()}},
 \code{\link[=chrome_exec]{chrome_exec()}},
 \code{\link[=firefox_exec]{firefox_exec()}},
 \code{\link[=libreoffice_exec]{libreoffice_exec()}},

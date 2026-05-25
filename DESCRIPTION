@@ -1,26 +1,26 @@
-Package: locatexec
 Type: Package
+Package: locatexec
 Title: Detection and Localization of Executable Files
-Version: 0.1.2.004
+Version: 0.1.2.005
 Authors@R: c(
-    person("David", "Gohel", role = c("aut", "cre"),
-    email = "david.gohel@ardata.fr"),
-    person(given = "ArData", role = "cph")
-    )
-Description: A set of functions to locate some programs 
- available on the user machine. The package provides functions to locate 
- 'Node.js', 'npm', 'LibreOffice', 'Microsoft Word', 'Microsoft PowerPoint', 
- 'Microsoft Excel', 'Python', 'pip', 'Mozilla Firefox' and 'Google Chrome'.
- User can test the availability of a program with eventually a version 
- and call it with function system2() or system(). This allows the use of 
- a single function to retrieve the path to a program regardless of the 
- operating system and its configuration.
+    person("David", "Gohel", , "david.gohel@ardata.fr", role = c("aut", "cre")),
+    person("ArData", role = "cph")
+  )
+Description: A set of functions to locate some programs available on the
+    user machine. The package provides functions to locate 'Node.js',
+    'npm', 'LibreOffice', 'Microsoft Word', 'Microsoft PowerPoint',
+    'Microsoft Excel', 'Python', 'pip', 'Mozilla Firefox', 'Google Chrome'
+    and 'air'. User can test the availability of a program with eventually
+    a version and call it with function system2() or system(). This allows
+    the use of a single function to retrieve the path to a program
+    regardless of the operating system and its configuration.
 License: MIT + file LICENSE
-Encoding: UTF-8
-Roxygen: list(markdown = TRUE)
-Imports: utils
+BugReports: https://github.com/ardata-fr/locatexec/issues
+Imports: 
+    utils
 Suggests:
     testthat (>= 3.0.0)
-BugReports: https://github.com/ardata-fr/locatexec/issues
 Config/roxygen2/version: 8.0.0
 Config/testthat/edition: 3
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)

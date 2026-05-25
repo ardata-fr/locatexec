@@ -9,6 +9,7 @@
 #' * `libreoffice`: 'LibreOffice' executable
 #' * `node`: 'node.js' executable
 #' * `npm`: 'npm' executable
+#' * `air`: 'air' R formatter and language server executable
 #' * `python`: 'python' executable
 #' * `pip`: 'pip' executable
 #' * `excel`: 'Microsoft Excel' executable
@@ -21,6 +22,8 @@
 #'   message(exec_version("chrome"))
 #' if(exec_available("node"))
 #'   message(exec_version("node"))
+#' if(exec_available("air"))
+#'   message(exec_version("air"))
 #' if(exec_available("python"))
 #'   message(exec_version("python"))
 #' if(exec_available("libreoffice"))

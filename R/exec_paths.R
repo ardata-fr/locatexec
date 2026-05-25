@@ -74,6 +74,21 @@ npm_exec <- function() {
 
 
 #' @export
+#' @title Path to 'air' executable
+#' @description return the full path of 'air' executable
+#' (the R formatter and language server) if found.
+#' @return executable full path in a character vector of length 1.
+#' @family executable full path
+#' @examples
+#' if(exec_available("air"))
+#'   message(air_exec())
+air_exec <- function() {
+  exec_locate("air")
+  exec_available("air", error = TRUE)
+  .exec$air$exec_file
+}
+
+#' @export
 #' @title Path to 'python' executable
 #' @description return the full path of 'python' executable
 #' if found.

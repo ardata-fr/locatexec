@@ -15,6 +15,7 @@ Use one of these values:
 \item \code{libreoffice}: 'LibreOffice' executable
 \item \code{node}: 'node.js' executable
 \item \code{npm}: 'npm' executable
+\item \code{air}: 'air' R formatter and language server executable
 \item \code{python}: 'python' executable
 \item \code{pip}: 'pip' executable
 \item \code{excel}: 'Microsoft Excel' executable
@@ -72,6 +73,7 @@ exec_locate("chrome", version = "88.0.4324.150")
 exec_locate("libreoffice")
 exec_locate("node")
 exec_locate("npm")
+exec_locate("air")
 exec_locate("python")
 exec_locate("pip")
 exec_locate("excel")

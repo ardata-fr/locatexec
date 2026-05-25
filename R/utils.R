@@ -10,6 +10,7 @@
 .exec$excel <- list(exec_file = NULL, version = NULL)
 .exec$powerpoint <- list(exec_file = NULL, version = NULL)
 .exec$word <- list(exec_file = NULL, version = NULL)
+.exec$air <- list(exec_file = NULL, version = NULL)
 
 .exec_names <- new.env()
 .exec_names$node <- list(exec_win = "node.exe", exec_osx = "node", exec_unix = "node")
@@ -24,6 +25,7 @@
 .exec_names$excel <- list(exec_win = "EXCEL.exe", exec_osx = "Microsoft Excel", exec_unix = NA_character_)
 .exec_names$powerpoint <- list(exec_win = "POWERPNT.exe", exec_osx = "Microsoft PowerPoint", exec_unix = NA_character_)
 .exec_names$word <- list(exec_win = "WINWORD.exe", exec_osx = "Microsoft Word", exec_unix = NA_character_)
+.exec_names$air <- list(exec_win = "air.exe", exec_osx = "air", exec_unix = "air")
 
 supported_exec <- names(.exec)
 

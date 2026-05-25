@@ -2,7 +2,7 @@
 # (GitHub Actions). Microsoft Office (excel/word/powerpoint) cannot.
 testable_execs <- c(
   "node", "npm", "python", "pip",
-  "chrome", "firefox", "libreoffice"
+  "chrome", "firefox", "libreoffice", "air"
 )
 
 # Skip a test when the executable is not installed on the host, so that the

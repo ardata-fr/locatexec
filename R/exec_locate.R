@@ -37,6 +37,7 @@
 #' exec_locate("libreoffice")
 #' exec_locate("node")
 #' exec_locate("npm")
+#' exec_locate("air")
 #' exec_locate("python")
 #' exec_locate("pip")
 #' exec_locate("excel")
@@ -250,6 +251,28 @@ exec_locate.npm <- function(exec, cache = TRUE, dir = NULL, version = NULL){
                           version_fun = extract_numeric_version,
                           version = version)
   as.list(.exec$npm)
+}
+
+#' @export
+exec_locate.air <- function(exec, cache = TRUE, dir = NULL, version = NULL){
+  if (!cache) set_exec_info(NULL, exec = exec)
+  if(exe_located(exec = exec, version = version)) return(as.list(.exec$air))
+
+  if(is.null(dir)){
+    sources <- c(
+      dirname(Sys.which(exec)),
+      path.expand("~/.local/bin"),
+      "/opt/homebrew/bin",
+      "/usr/local/bin",
+      "/usr/bin")
+  } else {
+    sources <- dir
+  }
+
+  compete_source_versions(sources = sources, exec = exec,
+                          version_fun = extract_numeric_version,
+                          version = version)
+  as.list(.exec$air)
 }
 
 
