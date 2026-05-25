@@ -64,9 +64,16 @@ extract_numeric_version <- function(path, version_flag = "--version") {
   gmatch <- gregexpr("[[:digit:]\\.]+", info)
   version <- regmatches(info, gmatch)
   version <- unlist(version)
+  # drop leading/trailing dots so that exotic outputs (e.g. "1.0.") do not
+  # produce an invalid version specification
+  version <- gsub("(^\\.|\\.$)", "", version)
+  version <- version[!version %in% ""]
   version <- head(version, n = 1)
   if(length(version)<1) return(numeric_version("0"))
-  numeric_version(version)
+  # a malformed token must not crash callers: treat it as "not found"
+  version <- try(numeric_version(version), silent = TRUE)
+  if(inherits(version, "try-error")) return(numeric_version("0"))
+  version
 }
 
 match_version <- function(exec_files, versions, match_version = NULL){
