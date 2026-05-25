@@ -17,8 +17,7 @@ is_windows <- function() {
 #' @examples
 #' is_osx()
 is_osx <- function() {
-  "unix" %in% .Platform$OS.type &&
-    "Darwin" %in% Sys.info()["sysname"]
+  "unix" %in% .Platform$OS.type && "Darwin" %in% Sys.info()["sysname"]
 }
 
 #' @export
@@ -29,7 +28,5 @@ is_osx <- function() {
 #' @examples
 #' is_unix()
 is_unix <- function() {
-  "unix" %in% .Platform$OS.type &&
-    !"Darwin" %in% Sys.info()["sysname"]
+  "unix" %in% .Platform$OS.type && !"Darwin" %in% Sys.info()["sysname"]
 }
-

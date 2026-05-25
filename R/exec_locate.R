@@ -56,22 +56,26 @@
 #' "libreglo.so cannot open shared object file" if it is the case). This
 #' can be done with R
 #' command `Sys.setenv(LD_LIBRARY_PATH = "/usr/lib/libreoffice/program/")`
-exec_locate <- function(exec, cache = TRUE, dir = NULL, version = NULL){
+exec_locate <- function(exec, cache = TRUE, dir = NULL, version = NULL) {
   exec <- match.arg(exec, choices = supported_exec, several.ok = FALSE)
   class(exec) <- exec
   UseMethod("exec_locate", exec)
 }
 
 #' @export
-exec_locate.chrome <- function(exec, cache = TRUE, dir = NULL, version = NULL){
-  if (!cache) set_exec_info(NULL, exec = exec)
-  if(exe_located(exec = exec, version = version)) return(as.list(.exec[[exec]]))
+exec_locate.chrome <- function(exec, cache = TRUE, dir = NULL, version = NULL) {
+  if (!cache) {
+    set_exec_info(NULL, exec = exec)
+  }
+  if (exe_located(exec = exec, version = version)) {
+    return(as.list(.exec[[exec]]))
+  }
 
-  if(!is.null(dir)){
+  if (!is.null(dir)) {
     sources <- absolute_path(dir)
-  } else if(is_osx()){
+  } else if (is_osx()) {
     sources <- "/Applications/Google Chrome.app/Contents/MacOS"
-  } else if(is_windows()){
+  } else if (is_windows()) {
     sources <- read_registry_app_path(main_exec(exec))
   } else {
     sources <- c(
@@ -81,22 +85,34 @@ exec_locate.chrome <- function(exec, cache = TRUE, dir = NULL, version = NULL){
     )
   }
 
-  compete_source_versions(sources = sources, exec = exec,
-                          version_fun = get_chrome_version,
-                          version = version)
+  compete_source_versions(
+    sources = sources,
+    exec = exec,
+    version_fun = get_chrome_version,
+    version = version
+  )
 
   as.list(.exec$chrome)
 }
 #' @export
-exec_locate.firefox <- function(exec, cache = TRUE, dir = NULL, version = NULL){
-  if (!cache) set_exec_info(NULL, exec = exec)
-  if(exe_located(exec = exec, version = version)) return(as.list(.exec$firefox))
+exec_locate.firefox <- function(
+  exec,
+  cache = TRUE,
+  dir = NULL,
+  version = NULL
+) {
+  if (!cache) {
+    set_exec_info(NULL, exec = exec)
+  }
+  if (exe_located(exec = exec, version = version)) {
+    return(as.list(.exec$firefox))
+  }
 
-  if(!is.null(dir)){
+  if (!is.null(dir)) {
     sources <- absolute_path(dir)
-  } else if(is_osx()){
+  } else if (is_osx()) {
     sources <- "/Applications/Firefox.app/Contents/MacOS"
-  } else if(is_windows()){
+  } else if (is_windows()) {
     sources <- read_registry_app_path(main_exec(exec))
   } else {
     sources <- c(
@@ -106,23 +122,30 @@ exec_locate.firefox <- function(exec, cache = TRUE, dir = NULL, version = NULL){
     )
   }
 
-  compete_source_versions(sources = sources, exec = exec,
-                          version_fun = extract_numeric_version,
-                          version = version)
+  compete_source_versions(
+    sources = sources,
+    exec = exec,
+    version_fun = extract_numeric_version,
+    version = version
+  )
 
   as.list(.exec$firefox)
 }
 
 #' @export
-exec_locate.excel <- function(exec, cache = TRUE, dir = NULL, version = NULL){
-  if (!cache) set_exec_info(NULL, exec = exec)
-  if(exe_located(exec = exec, version = version)) return(as.list(.exec$excel))
+exec_locate.excel <- function(exec, cache = TRUE, dir = NULL, version = NULL) {
+  if (!cache) {
+    set_exec_info(NULL, exec = exec)
+  }
+  if (exe_located(exec = exec, version = version)) {
+    return(as.list(.exec$excel))
+  }
 
-  if(!is.null(dir)){
+  if (!is.null(dir)) {
     sources <- absolute_path(dir)
-  } else if(is_osx()){
+  } else if (is_osx()) {
     sources <- "/Applications/Microsoft Excel.app/Contents/MacOS"
-  } else if(is_windows()){
+  } else if (is_windows()) {
     sources <- read_registry_app_path(main_exec(exec))
   } else {
     sources <- c(
@@ -132,22 +155,29 @@ exec_locate.excel <- function(exec, cache = TRUE, dir = NULL, version = NULL){
     )
   }
 
-  compete_source_versions(sources = sources, exec = exec,
-                          version_fun = get_excel_version,
-                          version = version)
+  compete_source_versions(
+    sources = sources,
+    exec = exec,
+    version_fun = get_excel_version,
+    version = version
+  )
 
   as.list(.exec$excel)
 }
 #' @export
-exec_locate.word <- function(exec, cache = TRUE, dir = NULL, version = NULL){
-  if (!cache) set_exec_info(NULL, exec = exec)
-  if(exe_located(exec = exec, version = version)) return(as.list(.exec$word))
+exec_locate.word <- function(exec, cache = TRUE, dir = NULL, version = NULL) {
+  if (!cache) {
+    set_exec_info(NULL, exec = exec)
+  }
+  if (exe_located(exec = exec, version = version)) {
+    return(as.list(.exec$word))
+  }
 
-  if(!is.null(dir)){
+  if (!is.null(dir)) {
     sources <- absolute_path(dir)
-  } else if(is_osx()){
+  } else if (is_osx()) {
     sources <- "/Applications/Microsoft Word.app/Contents/MacOS"
-  } else if(is_windows()){
+  } else if (is_windows()) {
     sources <- read_registry_app_path(main_exec(exec))
   } else {
     sources <- c(
@@ -157,22 +187,34 @@ exec_locate.word <- function(exec, cache = TRUE, dir = NULL, version = NULL){
     )
   }
 
-  compete_source_versions(sources = sources, exec = exec,
-                          version_fun = get_word_version,
-                          version = version)
+  compete_source_versions(
+    sources = sources,
+    exec = exec,
+    version_fun = get_word_version,
+    version = version
+  )
 
   as.list(.exec$word)
 }
 #' @export
-exec_locate.powerpoint <- function(exec, cache = TRUE, dir = NULL, version = NULL){
-  if (!cache) set_exec_info(NULL, exec = exec)
-  if(exe_located(exec = exec, version = version)) return(as.list(.exec$powerpoint))
+exec_locate.powerpoint <- function(
+  exec,
+  cache = TRUE,
+  dir = NULL,
+  version = NULL
+) {
+  if (!cache) {
+    set_exec_info(NULL, exec = exec)
+  }
+  if (exe_located(exec = exec, version = version)) {
+    return(as.list(.exec$powerpoint))
+  }
 
-  if(!is.null(dir)){
+  if (!is.null(dir)) {
     sources <- absolute_path(dir)
-  } else if(is_osx()){
+  } else if (is_osx()) {
     sources <- "/Applications/Microsoft PowerPoint.app/Contents/MacOS"
-  } else if(is_windows()){
+  } else if (is_windows()) {
     sources <- read_registry_app_path(main_exec(exec))
   } else {
     sources <- c(
@@ -182,109 +224,153 @@ exec_locate.powerpoint <- function(exec, cache = TRUE, dir = NULL, version = NUL
     )
   }
 
-  compete_source_versions(sources = sources, exec = exec,
-                          version_fun = get_powerpoint_version,
-                          version = version)
+  compete_source_versions(
+    sources = sources,
+    exec = exec,
+    version_fun = get_powerpoint_version,
+    version = version
+  )
 
   as.list(.exec$powerpoint)
 }
 
 #' @export
-exec_locate.libreoffice <- function(exec, cache = TRUE, dir = NULL, version = NULL){
-  if (!cache) set_exec_info(NULL, exec = exec)
-  if(exe_located(exec = exec, version = version)) return(as.list(.exec$libreoffice))
+exec_locate.libreoffice <- function(
+  exec,
+  cache = TRUE,
+  dir = NULL,
+  version = NULL
+) {
+  if (!cache) {
+    set_exec_info(NULL, exec = exec)
+  }
+  if (exe_located(exec = exec, version = version)) {
+    return(as.list(.exec$libreoffice))
+  }
 
-  if(is.null(dir)){
+  if (is.null(dir)) {
     sources <- c(
       dirname(Sys.which("soffice")),
       "/Applications/LibreOffice.app/Contents/MacOS",
       "~/Applications/LibreOffice.app/Contents/MacOS",
       "/usr/local/bin",
       "/usr/bin",
-      if(is_windows()) read_registry_app_path("soffice.exe"),
+      if (is_windows()) read_registry_app_path("soffice.exe"),
       "C:/Program Files/LibreOffice/program"
     )
   } else {
     sources <- dir
   }
 
-  compete_source_versions(sources = sources, exec = exec,
-                          version_fun = extract_numeric_version,
-                          version = version)
+  compete_source_versions(
+    sources = sources,
+    exec = exec,
+    version_fun = extract_numeric_version,
+    version = version
+  )
 
   as.list(.exec$libreoffice)
 }
 
 #' @export
-exec_locate.node <- function(exec, cache = TRUE, dir = NULL, version = NULL){
+exec_locate.node <- function(exec, cache = TRUE, dir = NULL, version = NULL) {
+  if (!cache) {
+    set_exec_info(NULL, exec = exec)
+  }
+  if (exe_located(exec = exec, version = version)) {
+    return(as.list(.exec$node))
+  }
 
-  if (!cache) set_exec_info(NULL, exec = exec)
-  if(exe_located(exec = exec, version = version)) return(as.list(.exec$node))
-
-  if(is.null(dir)){
-    sources <- c(dirname(Sys.which(exec)),
-                 "C:/Program Files/nodejs",
-                 "/usr/local/bin", "/usr/bin")
+  if (is.null(dir)) {
+    sources <- c(
+      dirname(Sys.which(exec)),
+      "C:/Program Files/nodejs",
+      "/usr/local/bin",
+      "/usr/bin"
+    )
   } else {
     sources <- dir
   }
 
-  compete_source_versions(sources = sources, exec = exec,
-                          version_fun = extract_numeric_version,
-                          version = version)
+  compete_source_versions(
+    sources = sources,
+    exec = exec,
+    version_fun = extract_numeric_version,
+    version = version
+  )
 
   as.list(.exec$node)
 }
 
 #' @export
-exec_locate.npm <- function(exec, cache = TRUE, dir = NULL, version = NULL){
-  if (!cache) set_exec_info(NULL, exec = exec)
-  if(exe_located(exec = exec, version = version)) return(as.list(.exec$npm))
+exec_locate.npm <- function(exec, cache = TRUE, dir = NULL, version = NULL) {
+  if (!cache) {
+    set_exec_info(NULL, exec = exec)
+  }
+  if (exe_located(exec = exec, version = version)) {
+    return(as.list(.exec$npm))
+  }
 
-  if(is.null(dir)){
+  if (is.null(dir)) {
     sources <- c(
       dirname(Sys.which(exec)),
       "C:/Program Files/nodejs",
       "/usr/local/bin",
-      "/usr/bin")
+      "/usr/bin"
+    )
   } else {
     sources <- dir
   }
 
-  compete_source_versions(sources = sources, exec = exec,
-                          version_fun = extract_numeric_version,
-                          version = version)
+  compete_source_versions(
+    sources = sources,
+    exec = exec,
+    version_fun = extract_numeric_version,
+    version = version
+  )
   as.list(.exec$npm)
 }
 
 #' @export
-exec_locate.air <- function(exec, cache = TRUE, dir = NULL, version = NULL){
-  if (!cache) set_exec_info(NULL, exec = exec)
-  if(exe_located(exec = exec, version = version)) return(as.list(.exec$air))
+exec_locate.air <- function(exec, cache = TRUE, dir = NULL, version = NULL) {
+  if (!cache) {
+    set_exec_info(NULL, exec = exec)
+  }
+  if (exe_located(exec = exec, version = version)) {
+    return(as.list(.exec$air))
+  }
 
-  if(is.null(dir)){
+  if (is.null(dir)) {
     sources <- c(
       dirname(Sys.which(exec)),
       path.expand("~/.local/bin"),
       "/opt/homebrew/bin",
       "/usr/local/bin",
-      "/usr/bin")
+      "/usr/bin"
+    )
   } else {
     sources <- dir
   }
 
-  compete_source_versions(sources = sources, exec = exec,
-                          version_fun = extract_numeric_version,
-                          version = version)
+  compete_source_versions(
+    sources = sources,
+    exec = exec,
+    version_fun = extract_numeric_version,
+    version = version
+  )
   as.list(.exec$air)
 }
 
 #' @export
-exec_locate.pandoc <- function(exec, cache = TRUE, dir = NULL, version = NULL){
-  if (!cache) set_exec_info(NULL, exec = exec)
-  if(exe_located(exec = exec, version = version)) return(as.list(.exec$pandoc))
+exec_locate.pandoc <- function(exec, cache = TRUE, dir = NULL, version = NULL) {
+  if (!cache) {
+    set_exec_info(NULL, exec = exec)
+  }
+  if (exe_located(exec = exec, version = version)) {
+    return(as.list(.exec$pandoc))
+  }
 
-  if(is.null(dir)){
+  if (is.null(dir)) {
     sources <- c(
       # pandoc bundled with RStudio / Quarto is exposed through this variable
       # and is usually not on the PATH (mimics rmarkdown::find_pandoc())
@@ -295,32 +381,47 @@ exec_locate.pandoc <- function(exec, cache = TRUE, dir = NULL, version = NULL){
       "/opt/homebrew/bin",
       "/usr/local/bin",
       "/usr/bin",
-      if(is_windows()) file.path(Sys.getenv("LOCALAPPDATA"), "Pandoc"),
-      "C:/Program Files/Pandoc")
+      if (is_windows()) file.path(Sys.getenv("LOCALAPPDATA"), "Pandoc"),
+      "C:/Program Files/Pandoc"
+    )
     sources <- sources[nzchar(sources)]
   } else {
     sources <- dir
   }
 
-  compete_source_versions(sources = sources, exec = exec,
-                          version_fun = extract_numeric_version,
-                          version = version)
+  compete_source_versions(
+    sources = sources,
+    exec = exec,
+    version_fun = extract_numeric_version,
+    version = version
+  )
   as.list(.exec$pandoc)
 }
 
 
-build_python_dir_candidates <- function(){
+build_python_dir_candidates <- function() {
   userdir <- path.expand("~")
   dirs <- character(0L)
-  if(is_windows()){
+  if (is_windows()) {
     user_win_dirs <- list.dirs(
-      file.path(userdir, "..", "AppData","Local","Programs","Python"),
-      recursive = FALSE, full.names = TRUE)
-    conda_locs <- file.path(userdir, "..", c("Miniconda3", "Anaconda3", "Miniconda2", "Anaconda2"))
+      file.path(userdir, "..", "AppData", "Local", "Programs", "Python"),
+      recursive = FALSE,
+      full.names = TRUE
+    )
+    conda_locs <- file.path(
+      userdir,
+      "..",
+      c("Miniconda3", "Anaconda3", "Miniconda2", "Anaconda2")
+    )
 
-    public_win_dirs <- list.files(c("C:/Program Files", "C:/Program Files(x86)"),
-                                  recursive = FALSE, full.names = TRUE,
-                                  include.dirs = TRUE, pattern = "python", ignore.case = TRUE)
+    public_win_dirs <- list.files(
+      c("C:/Program Files", "C:/Program Files(x86)"),
+      recursive = FALSE,
+      full.names = TRUE,
+      include.dirs = TRUE,
+      pattern = "python",
+      ignore.case = TRUE
+    )
     dirs <- c(user_win_dirs, public_win_dirs, conda_locs)
   } else {
     dirs <- c(
@@ -338,45 +439,69 @@ build_python_dir_candidates <- function(){
 }
 
 #' @export
-exec_locate.python <- function(exec, cache = TRUE, dir = NULL, version = NULL){
-  if (!cache) set_exec_info(NULL, exec = exec)
-  if(exe_located(exec = exec, version = version)) return(as.list(.exec$python))
+exec_locate.python <- function(exec, cache = TRUE, dir = NULL, version = NULL) {
+  if (!cache) {
+    set_exec_info(NULL, exec = exec)
+  }
+  if (exe_located(exec = exec, version = version)) {
+    return(as.list(.exec$python))
+  }
 
-  if(is.null(dir)){
+  if (is.null(dir)) {
     sources <- c(
       build_python_dir_candidates(),
       dirname(Sys.which(exec)),
       "/usr/local/bin",
-      "/usr/bin")
+      "/usr/bin"
+    )
   } else {
     sources <- dir
   }
 
-  compete_source_versions(sources = sources,
-                          exec = exec,
-                          version_fun = extract_numeric_version,
-                          version = version)
+  compete_source_versions(
+    sources = sources,
+    exec = exec,
+    version_fun = extract_numeric_version,
+    version = version
+  )
 
   as.list(.exec$python)
 }
 
 #' @export
-exec_locate.pip <- function(exec, cache = TRUE, dir = NULL, version = NULL){
-  if (!cache) set_exec_info(NULL, exec = exec)
-  if(exe_located(exec = exec, version = version)) return(as.list(.exec$pip))
+exec_locate.pip <- function(exec, cache = TRUE, dir = NULL, version = NULL) {
+  if (!cache) {
+    set_exec_info(NULL, exec = exec)
+  }
+  if (exe_located(exec = exec, version = version)) {
+    return(as.list(.exec$pip))
+  }
 
-  python <- exec_locate.python(exec = "python", cache = cache, dir = dir, version = version)
-  if(!is.null(python$exec_file))
-    compete_source_versions(sources = dirname(python$exec_file),
-                          exec = exec,
-                          version_fun = extract_numeric_version,
-                          version = version)
+  python <- exec_locate.python(
+    exec = "python",
+    cache = cache,
+    dir = dir,
+    version = version
+  )
+  if (!is.null(python$exec_file)) {
+    compete_source_versions(
+      sources = dirname(python$exec_file),
+      exec = exec,
+      version_fun = extract_numeric_version,
+      version = version
+    )
+  }
 
   as.list(.exec$pip)
 }
 
 # utils ----
-compete_source_versions <- function(sources, exec, version_fun = extract_numeric_version, version){
+compete_source_versions <- function(
+  sources,
+  exec,
+  version_fun = extract_numeric_version,
+  version
+) {
   sources <- unique(sources)
   candidates <- exec_candidates(sources = sources, exec = exec)
   versions <- lapply(candidates, version_fun)
@@ -388,14 +513,24 @@ compete_source_versions <- function(sources, exec, version_fun = extract_numeric
 # some specific version reader ----
 
 get_word_version <- function(...) {
-  if(is_windows()){
+  if (is_windows()) {
     version <- read_registry_app_version("Word.Application")
-  } else if(is_osx()){
-    version <- system2(command = "mdls",
-                       args = c("-name", "kMDItemVersion", shQuote("/Applications/Microsoft Word.app")),
-                       stdout = TRUE, stderr = TRUE, timeout = 60)
-    if(any(is.na(version))) return(numeric_version("0"))
-  } else return(numeric_version("0"))
+  } else if (is_osx()) {
+    version <- system2(
+      command = "mdls",
+      args = c(
+        "-name",
+        "kMDItemVersion",
+        shQuote("/Applications/Microsoft Word.app")
+      ),
+      stdout = TRUE,
+      stderr = TRUE,
+      timeout = 60
+    )
+    if (any(is.na(version))) return(numeric_version("0"))
+  } else {
+    return(numeric_version("0"))
+  }
 
   gmatch <- gregexpr("[[:digit:]\\.]+", version)
   version <- regmatches(version, gmatch)
@@ -406,14 +541,24 @@ get_word_version <- function(...) {
   numeric_version(version)
 }
 get_powerpoint_version <- function(...) {
-  if(is_windows()){
+  if (is_windows()) {
     version <- read_registry_app_version("PowerPoint.Application")
-  } else if(is_osx()){
-    version <- system2(command = "mdls",
-                       args = c("-name", "kMDItemVersion", shQuote("/Applications/Microsoft PowerPoint.app")),
-                       stdout = TRUE, stderr = TRUE, timeout = 60)
-    if(any(is.na(version))) return(numeric_version("0"))
-  } else return(numeric_version("0"))
+  } else if (is_osx()) {
+    version <- system2(
+      command = "mdls",
+      args = c(
+        "-name",
+        "kMDItemVersion",
+        shQuote("/Applications/Microsoft PowerPoint.app")
+      ),
+      stdout = TRUE,
+      stderr = TRUE,
+      timeout = 60
+    )
+    if (any(is.na(version))) return(numeric_version("0"))
+  } else {
+    return(numeric_version("0"))
+  }
 
   gmatch <- gregexpr("[[:digit:]\\.]+", version)
   version <- regmatches(version, gmatch)
@@ -424,14 +569,24 @@ get_powerpoint_version <- function(...) {
   numeric_version(version)
 }
 get_excel_version <- function(...) {
-  if(is_windows()){
+  if (is_windows()) {
     version <- read_registry_app_version("Excel.Application")
-  } else if(is_osx()){
-    version <- system2(command = "mdls",
-                       args = c("-name", "kMDItemVersion", shQuote("/Applications/Microsoft Excel.app")),
-                       stdout = TRUE, stderr = TRUE, timeout = 60)
-    if(any(is.na(version))) return(numeric_version("0"))
-  } else return(numeric_version("0"))
+  } else if (is_osx()) {
+    version <- system2(
+      command = "mdls",
+      args = c(
+        "-name",
+        "kMDItemVersion",
+        shQuote("/Applications/Microsoft Excel.app")
+      ),
+      stdout = TRUE,
+      stderr = TRUE,
+      timeout = 60
+    )
+    if (any(is.na(version))) return(numeric_version("0"))
+  } else {
+    return(numeric_version("0"))
+  }
 
   gmatch <- gregexpr("[[:digit:]\\.]+", version)
   version <- regmatches(version, gmatch)
@@ -443,17 +598,22 @@ get_excel_version <- function(...) {
 }
 
 get_chrome_version <- function(exec_chrome) {
-  if(is_windows()){
-    chrome_v_registry <- try(utils::readRegistry("Software\\Google\\Chrome\\BLBeacon", hive = "HCU"),
-                             silent = TRUE)
-    if(!inherits(chrome_v_registry, "try-error"))
+  if (is_windows()) {
+    chrome_v_registry <- try(
+      utils::readRegistry("Software\\Google\\Chrome\\BLBeacon", hive = "HCU"),
+      silent = TRUE
+    )
+    if (!inherits(chrome_v_registry, "try-error")) {
       version <- chrome_v_registry$version
-    else return(numeric_version("0"))
+    } else {
+      return(numeric_version("0"))
+    }
   } else {
     info <- read_version(exec_chrome)
-    if(any(is.na(info))) return(numeric_version("0"))
+    if (any(is.na(info))) {
+      return(numeric_version("0"))
+    }
     version <- strsplit(info, split = " ")[[1]][3]
   }
   numeric_version(version)
 }
-

@@ -16,20 +16,31 @@ read_version <- function(path, version_flag = "--version") {
   old <- Sys.getenv("NODE_DISABLE_COMPILE_CACHE", unset = NA)
   Sys.setenv(NODE_DISABLE_COMPILE_CACHE = "1")
   on.exit(
-    if (is.na(old)) Sys.unsetenv("NODE_DISABLE_COMPILE_CACHE")
-    else Sys.setenv(NODE_DISABLE_COMPILE_CACHE = old),
+    if (is.na(old)) {
+      Sys.unsetenv("NODE_DISABLE_COMPILE_CACHE")
+    } else {
+      Sys.setenv(NODE_DISABLE_COMPILE_CACHE = old)
+    },
     add = TRUE
   )
-  info <- try(system2(path, args = version_flag,
-                      stderr = TRUE, stdout = TRUE, timeout = 20), silent = TRUE)
-  if(inherits(info, "try-error")) {
+  info <- try(
+    system2(
+      path,
+      args = version_flag,
+      stderr = TRUE,
+      stdout = TRUE,
+      timeout = 20
+    ),
+    silent = TRUE
+  )
+  if (inherits(info, "try-error")) {
     message(catch_error(path, version_flag))
     info <- NA_character_
   }
   info
 }
 
-catch_error <- function(path, version_flag){
+catch_error <- function(path, version_flag) {
   cmd <- tempfile(fileext = ".sh")
   log <- tempfile(fileext = ".log")
 

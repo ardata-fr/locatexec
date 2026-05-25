@@ -20,11 +20,11 @@ library(locatexec)
 [![R build status](https://github.com/ardata-fr/locatexec/workflows/R-CMD-check/badge.svg)](https://github.com/ardata-fr/locatexec/actions)
 <!-- badges: end -->
 
-The package aims to allow the localization of external programs such as
-"python", "Google Chrome", "node.js" and "LibreOffice" in order to be able to
-easily call them from R.
+The package helps locate external programs such as
+"python", "Google Chrome", "node.js" and "LibreOffice" so that they can be
+called easily from R.
 
-This makes it easier to call these programs from R from various operating
+This makes it easier to call these programs from R across various operating
 systems.
 
 ```{r}
@@ -37,8 +37,8 @@ if(exec_available("node")){
 ```
 
 ```{r echo=FALSE}
-execs <- c("node", "chrome", "python", "libreoffice", "excel", "powerpoint", 
-"pip", "firefox", "npm", "word")
+execs <- c("node", "chrome", "python", "libreoffice", "excel", "powerpoint",
+"pip", "firefox", "npm", "word", "air", "pandoc")
 exec_cmd <- paste0(execs, "_exec")
 
 dat <- data.frame(
@@ -80,9 +80,9 @@ install.packages("locatexec")
 
 ## Related work
 
-* Packages pagedown is providing `find_chrome()` for finding "Google Chrome".
+* Package pagedown provides `find_chrome()` for finding "Google Chrome".
 
-* Packages findpython is providing `find_python_cmd()` for finding "python".
+* Package findpython provides `find_python_cmd()` for finding "python".
 
 * If you want to go deeper with 'R' and 'node.js', I recommend 
 package [packer](https://packer.john-coene.com/).

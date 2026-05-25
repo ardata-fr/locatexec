@@ -7,12 +7,12 @@ Authors@R: c(
     person("ArData", role = "cph")
   )
 Description: A set of functions to locate some programs available on the
-    user machine. The package provides functions to locate 'Node.js',
-    'npm', 'LibreOffice', 'Microsoft Word', 'Microsoft PowerPoint',
-    'Microsoft Excel', 'Python', 'pip', 'Mozilla Firefox', 'Google
-    Chrome', 'air' and 'Pandoc'. User can test the availability of a
-    program with eventually a version and call it with function system2()
-    or system(). This allows the use of a single function to retrieve the
+    user machine. It can locate 'Node.js', 'npm', 'LibreOffice',
+    'Microsoft Word', 'Microsoft PowerPoint', 'Microsoft Excel', 'Python',
+    'pip', 'Mozilla Firefox', 'Google Chrome', 'Air' and 'Pandoc'. The
+    user can test the availability of a program, optionally with a
+    required version, and call it with the functions system2() or
+    system(). This allows the use of a single function to retrieve the
     path to a program regardless of the operating system and its
     configuration.
 License: MIT + file LICENSE

@@ -9,11 +9,11 @@
 status](https://github.com/ardata-fr/locatexec/workflows/R-CMD-check/badge.svg)](https://github.com/ardata-fr/locatexec/actions)
 <!-- badges: end -->
 
-The package aims to allow the localization of external programs such as
-“python”, “Google Chrome”, “node.js” and “LibreOffice” in order to be
-able to easily call them from R.
+The package helps locate external programs such as “python”, “Google
+Chrome”, “node.js” and “LibreOffice” so that they can be called easily
+from R.
 
-This makes it easier to call these programs from R from various
+This makes it easier to call these programs from R across various
 operating systems.
 
 ``` r
@@ -23,22 +23,24 @@ if(exec_available("node")){
   message(exec_version("node"))
   message(node_exec())
 }
-#> 12.16.0
-#> C:/Program Files/nodejs/node.exe
+#> 26.0.0
+#> /opt/homebrew/bin/node
 ```
 
-| exec        | exec\_fun            | available | version      | path                                                                  |
-| :---------- | :------------------- | :-------- | :----------- | :-------------------------------------------------------------------- |
-| node        | `node_exec()`        | TRUE      | 12.16.0      | C:/Program Files/nodejs/node.exe                                      |
-| chrome      | `chrome_exec()`      | TRUE      | 89.0.4389.82 | C:/Program Files (x86)/Google/Chrome/Application/chrome.exe           |
-| python      | `python_exec()`      | TRUE      | 3.9.1        | C:/Users/dgohe/AppData/Local/Programs/Python/Python39/python.exe      |
-| libreoffice | `libreoffice_exec()` | TRUE      | 7.1.0.3      | C:/Program Files/LibreOffice/program/soffice.com                      |
-| excel       | `excel_exec()`       | TRUE      | 16           | C:/Program Files/Microsoft Office/root/Office16/EXCEL.exe             |
-| powerpoint  | `powerpoint_exec()`  | TRUE      | 16           | C:/Program Files/Microsoft Office/root/Office16/POWERPNT.exe          |
-| pip         | `pip_exec()`         | TRUE      | 20.2.3       | C:/Users/dgohe/AppData/Local/Programs/Python/Python39/Scripts/pip.exe |
-| firefox     | `firefox_exec()`     | TRUE      | 86.0.1       | C:/Program Files/Mozilla Firefox/firefox.exe                          |
-| npm         | `npm_exec()`         | TRUE      | 6.13.4       | C:/Program Files/nodejs/npm.cmd                                       |
-| word        | `word_exec()`        | TRUE      | 16           | C:/Program Files/Microsoft Office/root/Office16/WINWORD.exe           |
+| exec | exec_fun | available | version | path |
+|:---|:---|:---|:---|:---|
+| node | `node_exec()` | TRUE | 26.0.0 | /opt/homebrew/bin/node |
+| chrome | `chrome_exec()` | TRUE | 148.0.7778.179 | /Applications/Google Chrome.app/Contents/MacOS/Google Chrome |
+| python | `python_exec()` | TRUE | 3.9.6 | /usr/bin/python3 |
+| libreoffice | `libreoffice_exec()` | TRUE | 26.2.3.2 | /opt/homebrew/bin/soffice |
+| excel | `excel_exec()` | TRUE | 16.109.1 | /Applications/Microsoft Excel.app/Contents/MacOS/Microsoft Excel |
+| powerpoint | `powerpoint_exec()` | TRUE | 16.109.1 | /Applications/Microsoft PowerPoint.app/Contents/MacOS/Microsoft PowerPoint |
+| pip | `pip_exec()` | TRUE | 21.2.4 | /usr/bin/pip3 |
+| firefox | `firefox_exec()` | TRUE | 151.0.1 | /Applications/Firefox.app/Contents/MacOS/firefox |
+| npm | `npm_exec()` | TRUE | 11.12.1 | /opt/homebrew/bin/npm |
+| word | `word_exec()` | TRUE | 16.109.1 | /Applications/Microsoft Word.app/Contents/MacOS/Microsoft Word |
+| air | `air_exec()` | TRUE | 0.8.0 | /Users/username/.local/bin/air |
+| pandoc | `pandoc_exec()` | TRUE | 3.9.0.2 | /opt/homebrew/bin/pandoc |
 
 ## Motivations
 
@@ -60,13 +62,12 @@ install.packages("locatexec")
 
 ## Related work
 
-  - Packages pagedown is providing `find_chrome()` for finding “Google
-    Chrome”.
-    
-  - Packages findpython is providing `find_python_cmd()` for finding "python".
+- Package pagedown provides `find_chrome()` for finding “Google Chrome”.
 
-  - If you want to go deeper with ‘R’ and ‘node.js’, I recommend package
-    [packer](https://packer.john-coene.com/).
+- Package findpython provides `find_python_cmd()` for finding “python”.
 
-  - If you want to go deeper with ‘R’ and ‘Python’, I recommend package
-    [reticulate](https://rstudio.github.io/reticulate/).
+- If you want to go deeper with ‘R’ and ‘node.js’, I recommend package
+  [packer](https://packer.john-coene.com/).
+
+- If you want to go deeper with ‘R’ and ‘Python’, I recommend package
+  [reticulate](https://rstudio.github.io/reticulate/).

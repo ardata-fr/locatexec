@@ -42,4 +42,3 @@ exec_version <- function(exec) {
   exec_locate(exec)
   .exec[[exec]]$version
 }
-

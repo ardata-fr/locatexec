@@ -59,10 +59,12 @@ exec_available <- function(exec, version = NULL, error = FALSE) {
   msg <- c(
     exec,
     if (!is.null(version)) c("version", version, "or higher"),
-    "is required and was not found.")
+    "is required and was not found."
+  )
 
-  if (error && !x)
+  if (error && !x) {
     stop(paste(msg, collapse = " "), call. = FALSE)
+  }
 
   x
 }

@@ -1,8 +1,15 @@
 # Executables that can realistically be installed and exercised in CI
 # (GitHub Actions). Microsoft Office (excel/word/powerpoint) cannot.
 testable_execs <- c(
-  "node", "npm", "python", "pip",
-  "chrome", "firefox", "libreoffice", "air", "pandoc"
+  "node",
+  "npm",
+  "python",
+  "pip",
+  "chrome",
+  "firefox",
+  "libreoffice",
+  "air",
+  "pandoc"
 )
 
 # Skip a test when the executable is not installed on the host, so that the
