@@ -1,0 +1,43 @@
+url: https://ardata-fr.github.io/locatexec/
+
+title: locatexec
+
+development:
+  mode: auto
+
+template:
+  bootstrap: 5
+  theme: breeze-light
+  bootswatch: simplex
+  bslib:
+    pkgdown-nav-height: 100px
+    base_font:
+      google: "Open Sans"
+
+
+reference:
+  - title: Detect and locate executables
+    desc: >
+      Core functions to check whether a program is installed, get its version,
+      and retrieve the path to its executable. exec_available() tests
+      availability (optionally for a minimum version), exec_version() returns
+      the version found, and exec_locate() performs the search.
+    contents:
+    - exec_available
+    - exec_version
+    - exec_locate
+
+  - title: Path to a specific executable
+    desc: >
+      Convenience wrappers that return the full path to a given program,
+      regardless of the operating system and its configuration.
+    contents:
+    - ends_with("_exec")
+
+  - title: Operating system
+    desc: >
+      Helpers to test which operating system R is running on.
+    contents:
+    - is_windows
+    - is_osx
+    - is_unix

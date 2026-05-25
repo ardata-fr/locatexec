@@ -7,6 +7,9 @@
 
 [![R build
 status](https://github.com/ardata-fr/locatexec/workflows/R-CMD-check/badge.svg)](https://github.com/ardata-fr/locatexec/actions)
+[![version](https://www.r-pkg.org/badges/version/locatexec)](https://CRAN.R-project.org/package=locatexec)
+[![codecov test
+coverage](https://codecov.io/gh/ardata-fr/locatexec/branch/main/graph/badge.svg)](https://app.codecov.io/gh/ardata-fr/locatexec)
 <!-- badges: end -->
 
 The package helps locate external programs such as “python”, “Google

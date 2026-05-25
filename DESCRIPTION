@@ -16,6 +16,8 @@ Description: A set of functions to locate some programs available on the
     path to a program regardless of the operating system and its
     configuration.
 License: MIT + file LICENSE
+URL: https://ardata-fr.github.io/locatexec/,
+    https://github.com/ardata-fr/locatexec
 BugReports: https://github.com/ardata-fr/locatexec/issues
 Imports: 
     utils
