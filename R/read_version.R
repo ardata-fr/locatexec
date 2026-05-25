@@ -8,7 +8,11 @@ read_version <- function(path, version_flag = "--version") {
     return(NA_character_)
   }
 
+  # NODE_DISABLE_COMPILE_CACHE=1 prevents node/npm (>= Node 22.8) from leaving a
+  # 'node-compile-cache' directory in os.tmpdir(); ignored by older node and by
+  # other executables, so it is safe to set unconditionally.
   info <- try(system2(path, args = version_flag,
+                      env = "NODE_DISABLE_COMPILE_CACHE=1",
                       stderr = TRUE, stdout = TRUE, timeout = 20), silent = TRUE)
   if(inherits(info, "try-error")) {
     message(catch_error(path, version_flag))
@@ -24,11 +28,11 @@ catch_error <- function(path, version_flag){
   writeLines(text = paste(path, version_flag, ">", log, "2>&1"), cmd)
   Sys.chmod(cmd, mode = "755")
 
-  suppressWarnings(try(system2(cmd, timeout = 20), silent = TRUE))
+  suppressWarnings(try(system2(cmd, env = "NODE_DISABLE_COMPILE_CACHE=1",
+                               timeout = 20), silent = TRUE))
 
   message("The following command failed: ", paste(path, version_flag))
   message("with following log:")
 
   paste0(readLines(log), collapse = "\n")
 }
-

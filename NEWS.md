@@ -1,3 +1,7 @@
+# locatexec 0.1.2
+
+* Set `NODE_DISABLE_COMPILE_CACHE=1` when calling node/npm to avoid leaving a `node-compile-cache` directory in the temp directory.
+
 # locatexec 0.1.1
 
 * Added some timeout when system2 is called.
