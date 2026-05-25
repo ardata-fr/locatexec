@@ -48,9 +48,8 @@ This was motivated by the need for tools similar to
 `rmarkdown::pandoc_available()` and `rmarkdown::pandoc_exec()` but
 allowing to locate external programs other than `pandoc`.
 
-I need to use these programs from R without having heavy dependencies.
-These functions will mainly be used to automate some visual tests or to
-improve the documentation of other packages.
+I needed to call these programs from R without pulling in heavy
+dependencies.
 
 ## Installation
 
