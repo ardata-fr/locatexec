@@ -16,6 +16,7 @@ Use one of these values:
 \item \code{node}: 'node.js' executable
 \item \code{npm}: 'npm' executable
 \item \code{air}: 'air' R formatter and language server executable
+\item \code{pandoc}: 'Pandoc' document converter executable
 \item \code{python}: 'python' executable
 \item \code{pip}: 'pip' executable
 \item \code{excel}: 'Microsoft Excel' executable
@@ -36,6 +37,8 @@ if(exec_available("node"))
   message(exec_version("node"))
 if(exec_available("air"))
   message(exec_version("air"))
+if(exec_available("pandoc"))
+  message(exec_version("pandoc"))
 if(exec_available("python"))
   message(exec_version("python"))
 if(exec_available("libreoffice"))

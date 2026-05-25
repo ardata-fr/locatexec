@@ -16,6 +16,7 @@ Use one of these values:
 \item \code{node}: 'node.js' executable
 \item \code{npm}: 'npm' executable
 \item \code{air}: 'air' R formatter and language server executable
+\item \code{pandoc}: 'Pandoc' document converter executable
 \item \code{python}: 'python' executable
 \item \code{pip}: 'pip' executable
 \item \code{excel}: 'Microsoft Excel' executable
@@ -54,6 +55,9 @@ with argument \code{dir}).
 on linux OS.
 \item the search for 'pip' is using the result of the search of 'python' to find the corresponding
 'pip' executable.
+\item the search for 'pandoc' also looks into the directory referenced by the
+\code{RSTUDIO_PANDOC} environment variable (the copy bundled with 'RStudio' and
+'Quarto'), in addition to the \code{PATH}.
 }
 }
 \section{libreoffice}{
@@ -74,6 +78,7 @@ exec_locate("libreoffice")
 exec_locate("node")
 exec_locate("npm")
 exec_locate("air")
+exec_locate("pandoc")
 exec_locate("python")
 exec_locate("pip")
 exec_locate("excel")

@@ -6,7 +6,8 @@ exec_path_funs <- list(
   chrome = chrome_exec,
   firefox = firefox_exec,
   libreoffice = libreoffice_exec,
-  air = air_exec
+  air = air_exec,
+  pandoc = pandoc_exec
 )
 
 test_that("*_exec() returns the path found by exec_locate", {

@@ -1,6 +1,7 @@
 # locatexec 0.1.2
 
 * Add detection of the 'air' executable (R formatter).
+* Add detection of the 'Pandoc' executable.
 * Make version parsing robust: an executable emitting an unexpected `--version` 
 output (e.g. the Firefox snap wrapper on Ubuntu) no longer raises "invalid 
 version specification" but is reported as not found.

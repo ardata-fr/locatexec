@@ -38,6 +38,9 @@
 #' if (exec_available("air")) {
 #'   cat("air", as.character(exec_version("air")), "is available!\n")
 #' }
+#' if (exec_available("pandoc")) {
+#'   cat("pandoc", as.character(exec_version("pandoc")), "is available!\n")
+#' }
 #' if (exec_available("excel")) {
 #'   cat("excel", as.character(exec_version("excel")), "is available!\n")
 #' }

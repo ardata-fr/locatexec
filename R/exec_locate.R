@@ -18,6 +18,9 @@
 #' on linux OS.
 #' * the search for 'pip' is using the result of the search of 'python' to find the corresponding
 #' 'pip' executable.
+#' * the search for 'pandoc' also looks into the directory referenced by the
+#' `RSTUDIO_PANDOC` environment variable (the copy bundled with 'RStudio' and
+#' 'Quarto'), in addition to the `PATH`.
 #'
 #'
 #' @inheritParams exec_version
@@ -38,6 +41,7 @@
 #' exec_locate("node")
 #' exec_locate("npm")
 #' exec_locate("air")
+#' exec_locate("pandoc")
 #' exec_locate("python")
 #' exec_locate("pip")
 #' exec_locate("excel")
@@ -273,6 +277,35 @@ exec_locate.air <- function(exec, cache = TRUE, dir = NULL, version = NULL){
                           version_fun = extract_numeric_version,
                           version = version)
   as.list(.exec$air)
+}
+
+#' @export
+exec_locate.pandoc <- function(exec, cache = TRUE, dir = NULL, version = NULL){
+  if (!cache) set_exec_info(NULL, exec = exec)
+  if(exe_located(exec = exec, version = version)) return(as.list(.exec$pandoc))
+
+  if(is.null(dir)){
+    sources <- c(
+      # pandoc bundled with RStudio / Quarto is exposed through this variable
+      # and is usually not on the PATH (mimics rmarkdown::find_pandoc())
+      Sys.getenv("RSTUDIO_PANDOC"),
+      dirname(Sys.which(exec)),
+      path.expand("~/opt/pandoc"),
+      path.expand("~/.local/bin"),
+      "/opt/homebrew/bin",
+      "/usr/local/bin",
+      "/usr/bin",
+      if(is_windows()) file.path(Sys.getenv("LOCALAPPDATA"), "Pandoc"),
+      "C:/Program Files/Pandoc")
+    sources <- sources[nzchar(sources)]
+  } else {
+    sources <- dir
+  }
+
+  compete_source_versions(sources = sources, exec = exec,
+                          version_fun = extract_numeric_version,
+                          version = version)
+  as.list(.exec$pandoc)
 }
 
 

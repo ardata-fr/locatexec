@@ -89,6 +89,21 @@ air_exec <- function() {
 }
 
 #' @export
+#' @title Path to 'pandoc' executable
+#' @description return the full path of 'pandoc' executable
+#' if found.
+#' @return executable full path in a character vector of length 1.
+#' @family executable full path
+#' @examples
+#' if(exec_available("pandoc"))
+#'   message(pandoc_exec())
+pandoc_exec <- function() {
+  exec_locate("pandoc")
+  exec_available("pandoc", error = TRUE)
+  .exec$pandoc$exec_file
+}
+
+#' @export
 #' @title Path to 'python' executable
 #' @description return the full path of 'python' executable
 #' if found.

@@ -25,6 +25,7 @@ Other executable full path:
 \code{\link[=firefox_exec]{firefox_exec()}},
 \code{\link[=libreoffice_exec]{libreoffice_exec()}},
 \code{\link[=npm_exec]{npm_exec()}},
+\code{\link[=pandoc_exec]{pandoc_exec()}},
 \code{\link[=pip_exec]{pip_exec()}},
 \code{\link[=powerpoint_exec]{powerpoint_exec()}},
 \code{\link[=python_exec]{python_exec()}},
