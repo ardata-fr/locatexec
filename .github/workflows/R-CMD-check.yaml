@@ -44,15 +44,33 @@ jobs:
         with:
           python-version: '3.x'
 
+      # Browsers are installed where locatexec looks for them: the
+      # /Applications/*.app bundles on macOS and the system PATH / registry on
+      # Linux and Windows (Chrome and Firefox are preinstalled on the Windows
+      # and Ubuntu runners and registered so exec_locate() can find them).
+      - name: Install browsers (macOS)
+        if: runner.os == 'macOS'
+        run: |
+          brew install --cask google-chrome
+          brew install --cask firefox
+
+      - name: Install firefox (Linux)
+        if: runner.os == 'Linux'
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y firefox
+
       - name: Install libreoffice (macOS)
-        if: matrix.config.os == 'macOS-latest'
+        if: runner.os == 'macOS'
         run: brew install --cask libreoffice
 
       - name: Install libreoffice (Linux)
         if: runner.os == 'Linux'
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y libreoffice
+        run: sudo apt-get install -y libreoffice
+
+      - name: Install libreoffice (Windows)
+        if: runner.os == 'Windows'
+        run: choco install --no-progress libreoffice-fresh
 
       - uses: r-lib/actions/setup-r-dependencies@v2
         with:
