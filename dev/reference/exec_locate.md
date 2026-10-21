@@ -106,7 +106,7 @@ exec_locate("firefox")
 #> [1] "/usr/bin/firefox"
 #> 
 #> $version
-#> [1] ‘150.0.3’
+#> [1] ‘157.0’
 #> 
 exec_locate("chrome")
 #> $exec_file
@@ -134,14 +134,14 @@ exec_locate("node")
 #> [1] "/usr/local/bin/node"
 #> 
 #> $version
-#> [1] ‘22.22.3’
+#> [1] ‘22.23.3’
 #> 
 exec_locate("npm")
 #> $exec_file
 #> [1] "/usr/local/bin/npm"
 #> 
 #> $version
-#> [1] ‘10.9.8’
+#> [1] ‘10.9.9’
 #> 
 exec_locate("air")
 #> $exec_file

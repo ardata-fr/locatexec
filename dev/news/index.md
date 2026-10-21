@@ -1,6 +1,15 @@
 # Changelog
 
-## locatexec 0.1.2
+## locatexec 0.2.1
+
+- On Linux, executables are now run without the `LD_LIBRARY_PATH` set by
+  R to read their version. R prepends its own library directories to
+  this variable and ‘LibreOffice’ was then failing (“libreglo.so: cannot
+  open shared object file”) or aborting, so that it was not detected.
+
+## locatexec 0.2.0
+
+CRAN release: 2026-05-25
 
 - Add detection of the ‘air’ executable (R formatter).
 - Add detection of the ‘Pandoc’ executable.

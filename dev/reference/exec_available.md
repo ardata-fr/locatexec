@@ -77,15 +77,15 @@ if (exec_available("chrome")) {
 if (exec_available("firefox")) {
   cat("firefox", as.character(exec_version("firefox")), "is available!\n")
 }
-#> firefox 150.0.3 is available!
+#> firefox 157.0 is available!
 if (exec_available("node")) {
   cat("node.js", as.character(exec_version("node")), "is available!\n")
 }
-#> node.js 22.22.3 is available!
+#> node.js 22.23.3 is available!
 if (exec_available("npm")) {
   cat("npm", as.character(exec_version("npm")), "is available!\n")
 }
-#> npm 10.9.8 is available!
+#> npm 10.9.9 is available!
 if (exec_available("npm", version = "10.13.0")) {
   cat("npm", as.character(exec_version("npm")), "is available!\n")
 }

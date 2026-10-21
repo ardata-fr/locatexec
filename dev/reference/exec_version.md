@@ -50,7 +50,7 @@ if(exec_available("chrome"))
   message(exec_version("chrome"))
 if(exec_available("node"))
   message(exec_version("node"))
-#> 22.22.3
+#> 22.23.3
 if(exec_available("air"))
   message(exec_version("air"))
 if(exec_available("pandoc"))
@@ -67,5 +67,5 @@ if(exec_available("powerpoint"))
   message(exec_version("powerpoint"))
 if(exec_available("firefox"))
   message(exec_version("firefox"))
-#> 150.0.3
+#> 157.0
 ```

@@ -12,13 +12,13 @@ Source:
 [`DESCRIPTION`](https://github.com/ardata-fr/locatexec/blob/main/DESCRIPTION)
 
 Gohel D (2026). *locatexec: Detection and Localization of Executable
-Files*. R package version 0.1.2.006,
+Files*. R package version 0.2.1.001,
 <https://ardata-fr.github.io/locatexec/>.
 
     @Manual{,
       title = {locatexec: Detection and Localization of Executable Files},
       author = {David Gohel},
       year = {2026},
-      note = {R package version 0.1.2.006},
+      note = {R package version 0.2.1.001},
       url = {https://ardata-fr.github.io/locatexec/},
     }
