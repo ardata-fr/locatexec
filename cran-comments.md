@@ -1,6 +1,6 @@
 
 ## Test environments
-* local R installation, R 4.5.3
+* local R installation, R 4.6.1
 * win-builder (release and devel)
 
 ## R CMD check results
