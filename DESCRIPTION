@@ -1,7 +1,7 @@
 Type: Package
 Package: locatexec
 Title: Detection and Localization of Executable Files
-Version: 0.2.0
+Version: 0.2.1.001
 Authors@R: c(
     person("David", "Gohel", , "david.gohel@ardata.fr", role = c("aut", "cre")),
     person("ArData", role = "cph")
@@ -22,7 +22,7 @@ Imports:
     utils
 Suggests:
     testthat (>= 3.0.0)
-Config/roxygen2/version: 8.0.0
+Config/roxygen2/version: 8.1.1
 Config/testthat/edition: 3
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)

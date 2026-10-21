@@ -23,6 +23,21 @@ read_version <- function(path, version_flag = "--version") {
     },
     add = TRUE
   )
+
+  # On Linux, R prepends its own library directories to LD_LIBRARY_PATH
+  # (see R_HOME/etc/ldpaths) and executables inherit them: LibreOffice then
+  # loads other versions of its libraries and fails ("libreglo.so: cannot
+  # open shared object file") or aborts. The variable is removed for the call
+  # and restored afterwards.
+  if (is_unix()) {
+    old_ld <- Sys.getenv("LD_LIBRARY_PATH", unset = NA)
+    Sys.unsetenv("LD_LIBRARY_PATH")
+    on.exit(
+      if (!is.na(old_ld)) Sys.setenv(LD_LIBRARY_PATH = old_ld),
+      add = TRUE
+    )
+  }
+
   info <- try(
     system2(
       path,

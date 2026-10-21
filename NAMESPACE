@@ -30,5 +30,7 @@ export(pip_exec)
 export(powerpoint_exec)
 export(python_exec)
 export(word_exec)
-importFrom(utils,file_test)
-importFrom(utils,head)
+importFrom(utils,
+  file_test,
+  head
+)
