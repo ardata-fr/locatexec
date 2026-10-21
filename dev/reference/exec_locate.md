@@ -106,7 +106,7 @@ exec_locate("firefox")
 #> [1] "/usr/bin/firefox"
 #> 
 #> $version
-#> [1] ‘157.0’
+#> [1] ‘6759’
 #> 
 exec_locate("chrome")
 #> $exec_file

@@ -67,5 +67,5 @@ if(exec_available("powerpoint"))
   message(exec_version("powerpoint"))
 if(exec_available("firefox"))
   message(exec_version("firefox"))
-#> 157.0
+#> 6759
 ```

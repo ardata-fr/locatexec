@@ -77,7 +77,7 @@ if (exec_available("chrome")) {
 if (exec_available("firefox")) {
   cat("firefox", as.character(exec_version("firefox")), "is available!\n")
 }
-#> firefox 157.0 is available!
+#> firefox 6759 is available!
 if (exec_available("node")) {
   cat("node.js", as.character(exec_version("node")), "is available!\n")
 }
